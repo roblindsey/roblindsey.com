@@ -3,7 +3,7 @@ import { XMLParser } from "fast-xml-parser";
 
 export default async function () {
 	let url =
-		"https://www.goodreads.com/review/list_rss/1665822?key=H39MSaWq7oSelYZqx5A8UxNiqfZWcfVKPJsJbi_xKLewsbTM&shelf=read";
+		"https://www.goodreads.com/review/list_rss/1665822?key=H39MSaWq7oSelYZqx5A8UxNiqfZWcfVKPJsJbi_xKLewsbTM&shelf=read&sort=date_read";
 
 	let feed = await Fetch(url, {
 		duration: "1d",

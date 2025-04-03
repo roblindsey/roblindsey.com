@@ -8,36 +8,39 @@
 		"start": "npx @11ty/eleventy --serve",
 		"books": "cd automate/books && node books.js",
 		"robot": "node ./cli/index.js run",
-		"noted": "git add . && git commit -m 'New note.' && git push"
+		"noted": "git add . && git commit -m 'New note.' && git push",
+		"img": "node ./cli/commands/createReviewImage.js"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"@eslint/js": "^9.20.0",
-		"@inquirer/prompts": "^7.3.1",
+		"@eslint/js": "^9.23.0",
+		"@inquirer/prompts": "^7.4.0",
 		"commander": "^13.1.0",
-		"eslint": "^9.20.0",
-		"eslint-config-prettier": "^10.0.1",
-		"eslint-plugin-prettier": "^5.2.3",
-		"globals": "^15.14.0",
+		"eslint": "^9.23.0",
+		"eslint-config-prettier": "^10.1.1",
+		"eslint-plugin-prettier": "^5.2.6",
+		"get-pixels": "^3.3.3",
+		"globals": "^16.0.0",
 		"js-yaml": "^4.1.0",
 		"open": "^10.1.0",
-		"prettier": "^3.5.0",
+		"prettier": "^3.5.3",
+		"quantize": "^1.0.2",
 		"sharp": "^0.33.5"
 	},
 	"dependencies": {
 		"@11ty/eleventy": "^3.0.0",
 		"@11ty/eleventy-fetch": "^5.0.2",
 		"@11ty/eleventy-img": "^6.0.1",
-		"@11ty/eleventy-navigation": "^0.3.5",
+		"@11ty/eleventy-navigation": "^1.0.4",
 		"@11ty/eleventy-plugin-rss": "^2.0.3",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
 		"@11tyrocks/eleventy-plugin-lightningcss": "^1.4.0",
-		"axios": "^1.7.9",
+		"axios": "^1.8.4",
 		"dayjs": "^1.11.13",
 		"dotenv": "^16.4.7",
-		"fast-xml-parser": "^4.5.1",
-		"npm": "^11.0.0"
+		"fast-xml-parser": "^5.1.0",
+		"npm": "^11.2.0"
 	}
 }

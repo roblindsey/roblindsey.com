@@ -23,6 +23,7 @@ export default async (siteRoot) => {
 title: "${title}"
 date: ${postDate}
 permalink: /posts/${slug}/index.html
+description: ""
 excerpt: ""
 timestamp: ${timestamp}
 featuredImage:

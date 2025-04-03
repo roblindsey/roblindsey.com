@@ -9,3 +9,4 @@ automate/books/books.old.js
 .env
 .vscode
 .cache
+.DS_Store
