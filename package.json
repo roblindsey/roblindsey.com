@@ -16,18 +16,13 @@
 	"license": "ISC",
 	"devDependencies": {
 		"@eslint/js": "^9.23.0",
-		"@inquirer/prompts": "^7.4.0",
-		"commander": "^13.1.0",
 		"eslint": "^9.23.0",
 		"eslint-config-prettier": "^10.1.1",
 		"eslint-plugin-prettier": "^5.2.6",
-		"get-pixels": "^3.3.3",
 		"globals": "^16.0.0",
 		"js-yaml": "^4.1.0",
 		"open": "^10.1.0",
-		"prettier": "^3.5.3",
-		"quantize": "^1.0.2",
-		"sharp": "^0.33.5"
+		"prettier": "^3.5.3"
 	},
 	"dependencies": {
 		"@11ty/eleventy": "^3.0.0",

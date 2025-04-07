@@ -1,11 +1,6 @@
 node_modules
 public
 
-automate/node_modules
-
-automate/books/token.json
-automate/books/credentials.json
-automate/books/books.old.js
 .env
 .vscode
 .cache
