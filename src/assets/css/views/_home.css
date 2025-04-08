@@ -1,0 +1,33 @@
+.home--grid {
+	ul {
+		list-style-type: none;
+		display: flex;
+		gap: 16px;
+		flex-wrap: wrap;
+		margin: 0;
+		padding: 0;
+		li {
+			display: block;
+			width: 50%;
+			display: block;
+			&:nth-child(1) {
+				background-color: darkblue;
+			}
+			&:nth-child(2) {
+				background-color: darkcyan;
+			}
+			&:nth-child(3) {
+				background-color: darkred;
+			}
+			&:nth-child(4) {
+				background-color: darkseagreen;
+			}
+			a {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				aspect-ratio: 1;
+			}
+		}
+	}
+}

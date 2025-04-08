@@ -2,32 +2,24 @@
 title: Home
 permalink: "/"
 ---
-{% block head %}
-	<script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-	<script defer>
-		if (window.netlifyIdentity) {
-			window
-				.netlifyIdentity
-				.on("init", (user) => {
-					if (!user) {
-						window
-							.netlifyIdentity
-							.on("login", () => {
-								document.location.href = "/admin/";
-							});
-					}
-				});
-		}
-	</script>
 
-{% endblock %}
 <section class="home">
 	<header>
-		<img src="https://res.cloudinary.com/clubrob/image/upload/v1585072337/Rob%20Lindsey/blue-ridge-mountains-1900.jpg" alt="Blue Ridge Mountains">
-		<p>I'm a technologist, web developer, and web designer living in the western North Carolina mountains.</p>
+		<img
+			src="/assets/images/global/banners/blue-ridge-mountains-1900.jpg"
+			alt="Blue Ridge Mountains"
+		/>
+		<p>
+			I'm a technologist, web developer, and web designer living in the western
+			North Carolina mountains.
+		</p>
 	</header>
-	<div>
-		<h2>Latest</h2>
-		{% include "posts-list.njk" %}
+	<div class="home--grid">
+		<ul>
+			<li><a href="/posts">Posts</a></li>
+			<li><a href="/notes">Notes</a></li>
+			<li><a href="/now">Now</a></li>
+			<li><a href="/about">About</a></li>
+		</ul>
 	</div>
 </section>

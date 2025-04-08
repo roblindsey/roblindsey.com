@@ -4,6 +4,7 @@
 @import "./common/_base.css";
 @import "./components/_prism.css";
 @import "./components/_embeds.css";
+@import "./views/_home.css";
 @import "./views/_books.css";
 @import "./views/_post-list.css";
 @import "./views/_post.css";
