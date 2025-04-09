@@ -1,32 +1,60 @@
 .home--grid {
+	margin-top: 3rem;
 	ul {
 		list-style-type: none;
-		display: flex;
-		gap: 16px;
-		flex-wrap: wrap;
-		margin: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 1rem;
+		max-width: 600px;
+		width: 100%;
+		margin: 0 auto;
 		padding: 0;
 		li {
 			display: block;
-			width: 50%;
-			display: block;
-			&:nth-child(1) {
-				background-color: darkblue;
-			}
-			&:nth-child(2) {
-				background-color: darkcyan;
-			}
-			&:nth-child(3) {
-				background-color: darkred;
-			}
-			&:nth-child(4) {
-				background-color: darkseagreen;
+			border-radius: 1rem;
+			box-shadow: 1px 3px 3px lch(from var(--raisin-black) calc(l - 10) c h);
+			&:active {
+				box-shadow: unset;
 			}
 			a {
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				aspect-ratio: 1;
+				font-size: 2rem;
+				font-family: var(--font-family-heading);
+				text-transform: uppercase;
+				font-weight: 700;
+				letter-spacing: 0.05em;
+				text-decoration: none;
+			}
+		}
+		.home--grid-posts {
+			background-color: var(--red-accent);
+			transition: all 200ms;
+			&:hover {
+				background-color: lch(from var(--red-accent) calc(l - 5) c h);
+			}
+		}
+		.home--grid-notes {
+			background-color: var(--brown-accent);
+			transition: all 200ms;
+			&:hover {
+				background-color: lch(from var(--brown-accent) calc(l - 5) c h);
+			}
+		}
+		.home--grid-now {
+			background-color: var(--green-accent);
+			transition: all 200ms;
+			&:hover {
+				background-color: lch(from var(--green-accent) calc(l - 5) c h);
+			}
+		}
+		.home--grid-about {
+			background-color: var(--blue-accent);
+			transition: all 200ms;
+			&:hover {
+				background-color: lch(from var(--blue-accent) calc(l - 5) c h);
 			}
 		}
 	}

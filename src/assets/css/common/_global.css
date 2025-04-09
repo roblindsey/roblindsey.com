@@ -41,9 +41,10 @@
 }
 
 :root {
-	--font-family-body: "Open Sans", -apple-system, BlinkMacSystemFont,
-		"Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
-		"Segoe UI Emoji", "Segoe UI Symbol";
+	--font-family-body:
+		"Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+		"Segoe UI Symbol";
 	--font-family-heading: "Nohemi", Impact, sans-serif;
 
 	/* CSS HSL */
@@ -62,6 +63,10 @@
 	--quinacridone-magenta: hsla(327, 50%, 37%, 1);
 	--magenta: rgb(195, 53, 131);
 	--tyrian-purple: hsla(330, 91%, 17%, 1);
+	--red-accent: lch(from var(--raisin-black) calc(l - 3) c calc(h + 90));
+	--brown-accent: lch(from var(--raisin-black) calc(l - 3) c calc(h + 180));
+	--green-accent: lch(from var(--raisin-black) calc(l - 3) c calc(h + 270));
+	--blue-accent: lch(from var(--raisin-black) calc(l - 3) c calc(h + 360));
 }
 
 body {
@@ -112,4 +117,7 @@ figcaption {
 picture,
 img {
 	height: auto;
+}
+b {
+	font-weight: bold !important;
 }
