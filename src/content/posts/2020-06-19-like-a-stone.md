@@ -1,4 +1,5 @@
 ---
+tags: "blog"
 title: Like a Stone
 date: "2020-06-19T18:20:35Z"
 timestamp: "1592590835"

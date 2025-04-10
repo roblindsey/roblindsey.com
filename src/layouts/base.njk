@@ -20,7 +20,7 @@
 			{% endif %}
 		</title>
 	</head>
-	<body class="base--{{ title | slug }}" onload="document.body.style.visibility = 'visible';">
+	<body class="base--{{ title | slug }} {% for tag in tags %}tag-{{ tag }} {% endfor %}" onload="document.body.style.visibility = 'visible';">
 		<script>
 			document.body.style.visibility = `hidden`;
 		</script>

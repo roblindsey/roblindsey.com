@@ -1,4 +1,5 @@
 ---
+tags: "blog"
 title: Springtime in a Plague Year
 date: "2020-03-25T18:22:02Z"
 timestamp: "1585160522"

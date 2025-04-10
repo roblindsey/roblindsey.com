@@ -7,7 +7,6 @@
 		"build": "npx @11ty/eleventy",
 		"start": "npx @11ty/eleventy --serve",
 		"books": "cd automate/books && node books.js",
-		"robot": "node ./cli/index.js run",
 		"noted": "git add . && git commit -m 'New note.' && git push",
 		"img": "node ./cli/commands/createReviewImage.js"
 	},

@@ -1,15 +1,16 @@
 ---
+tags: "book-review"
 title: "Book Review: Clockwork Boys"
-date: 2025-04-02T15:00:50.017Z
+date: 2025-04-10T20:24:29.654Z
 permalink: /posts/book-review-clockwork-boys/index.html
 description: ""
 excerpt: ""
-timestamp: 1743606050
+timestamp: 1744316669
 featuredImage:
-  src:
-  credit:
-  url:
-  alt:
+  src: /assets/images/posts/2025/clockwork-boys-featured.jpg
+  credit: Clockwork Boys
+  url: /assets/images/posts/2025/clockwork-boys-featured.jpg
+  alt: Clockwork Boys
 ---
 
 This is a cute, steampunk fantasy with a ragtag team coming together to accomplish a goal. Kingfisher is one of my favorite current writers, and her voice here is funny and quirky. This works especially well when she writes the interior monologues of her characters. Comparisons to Terry Pratchett are warranted.

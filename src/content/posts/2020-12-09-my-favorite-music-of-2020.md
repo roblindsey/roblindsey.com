@@ -1,4 +1,5 @@
 ---
+tags: "blog"
 title: My Favorite Music of 2020
 date: "2020-12-09T15:43:33Z"
 timestamp: "1607528613"

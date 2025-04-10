@@ -30,4 +30,12 @@ export const filters = {
 		const slug = `${slugDay}-${slugTime}`.replaceAll("-", "");
 		return slug;
 	},
+	addTagsToBodyClass: (bodyClasses, item) => {
+		if (item && item.data && item.data.tags) {
+			item.data.tags.forEach((tag) => {
+				bodyClasses.push(`${tag}-collection`); // Or use a prefix like 'tag-' + tag
+			});
+		}
+		return bodyClasses;
+	},
 };

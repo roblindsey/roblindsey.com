@@ -1,4 +1,5 @@
 ---
+tags: "blog"
 title: Books Books Books
 date: "2018-10-20T16:22:20Z"
 timestamp: "1540052540"
@@ -54,7 +55,7 @@ Function to get the date of last book read from the books.json file:
 function getLastDateRead() {
 	let booksJSON = require("../src/_data/books.json");
 	let dateRead = dayjs(booksJSON.read[0].books[0].dateRead).format(
-		"YYYY/MM/DD"
+		"YYYY/MM/DD",
 	);
 	return new Date(dateRead);
 }

@@ -1,4 +1,5 @@
 ---
+tags: "blog"
 title: Rethinking Everything
 date: "2018-09-27T21:44:46Z"
 timestamp: "1538084686"

@@ -3,5 +3,4 @@ document.addEventListener("DOMContentLoaded", function () {
 	const pageHeadline = document.querySelector(".page-intro");
 	let randomNum = Math.floor(Math.random() * 4);
 	pageHeadline.style.backgroundColor = colorPalette[randomNum];
-	console.log("test");
 });
