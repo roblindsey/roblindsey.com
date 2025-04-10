@@ -111,8 +111,9 @@ a {
 }
 figcaption {
 	font-size: 0.75em;
-	background: var(--delft-blue);
-	padding: 0.15em 0.5em;
+	background: var(--blue-accent);
+	padding: 0.5em 0.5em;
+	text-box-trim: trim-both;
 }
 picture,
 img {

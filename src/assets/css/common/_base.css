@@ -67,6 +67,17 @@ main.base--main {
 	width: 100%;
 	margin: 0 auto;
 	padding: 3rem 1rem 200px 1rem;
+	.page-intro {
+		margin: 0 calc(50% - 50vw) 3rem;
+		padding: 2.75rem calc(50vw - 50%);
+		.page-title {
+			margin: 0;
+			color: var(--french-gray);
+			font-size: 2rem;
+			letter-spacing: 0.05em;
+			text-box-trim: trim-both;
+		}
+	}
 }
 footer.base--footer {
 	position: absolute;
