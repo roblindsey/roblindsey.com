@@ -4,7 +4,7 @@
 	"description": "",
 	"type": "module",
 	"scripts": {
-		"build": "cross-env ELEVENTY_ENV=prod npx @11ty/eleventy",
+		"build": "cross-env ELEVENTY_ENV=prod npx @11ty/eleventy --quiet",
 		"start": "cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve",
 		"noted": "git add . && git commit -m 'New note.' && git push"
 	},
