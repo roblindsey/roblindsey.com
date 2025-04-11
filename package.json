@@ -4,11 +4,9 @@
 	"description": "",
 	"type": "module",
 	"scripts": {
-		"build": "npx @11ty/eleventy",
-		"start": "npx @11ty/eleventy --serve",
-		"books": "cd automate/books && node books.js",
-		"noted": "git add . && git commit -m 'New note.' && git push",
-		"img": "node ./cli/commands/createReviewImage.js"
+		"build": "cross-env ELEVENTY_ENV=prod npx @11ty/eleventy",
+		"start": "cross-env ELEVENTY_ENV=dev npx @11ty/eleventy --serve",
+		"noted": "git add . && git commit -m 'New note.' && git push"
 	},
 	"keywords": [],
 	"author": "",
@@ -32,6 +30,7 @@
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
 		"@11tyrocks/eleventy-plugin-lightningcss": "^1.4.0",
 		"axios": "^1.8.4",
+		"cross-env": "^7.0.3",
 		"dayjs": "^1.11.13",
 		"dotenv": "^16.4.7",
 		"fast-xml-parser": "^5.1.0",

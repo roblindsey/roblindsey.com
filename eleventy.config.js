@@ -1,6 +1,7 @@
 import { plugins } from "./config/plugins.js";
 import { filters } from "./config/filters.js";
 import { collections } from "./config/collections.js";
+import "dotenv/config";
 
 export default async function (eleventyConfig) {
 	// Passthrough
@@ -29,10 +30,13 @@ export default async function (eleventyConfig) {
 	});
 }
 
+const outputPath =
+	process.env.ELEVENTY_ENV === "prod" ? process.env.PROD_OUTPUT_PATH : "public";
+
 export const config = {
 	dir: {
 		input: "src",
-		output: "public",
+		output: outputPath,
 		layouts: "layouts",
 	},
 	passthroughFileCopy: true,
