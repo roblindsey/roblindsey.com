@@ -1,0 +1,9 @@
+body.tag-book-review {
+	figure {
+		max-width: fit-content;
+		margin: 0 auto 3rem;
+		figcaption {
+			display: none;
+		}
+	}
+}

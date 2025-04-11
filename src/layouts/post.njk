@@ -6,7 +6,7 @@ layout: base
         {%- if featuredImage.alt|length %}
             <figure class="post__featured-image">
                 <img src="{{ featuredImage.src }}" alt="{{ featuredImage.alt }}">
-                <figcaption>Photo by <a href="{{ featuredImage.url }}">{{ featuredImage.credit }}</a>.</figcaption>
+                <figcaption><span>Photo by</span><a href="{{ featuredImage.url }}">{{ featuredImage.credit }}</a></figcaption>
             </figure>
         {% endif -%}
         <h2 class="page-title">{{title}}</h2>
