@@ -77,6 +77,12 @@ main.base--main {
 			letter-spacing: 0.05em;
 			text-box-trim: trim-both;
 		}
+		.page-subtitle {
+			margin: 0;
+			font-size: 0.75em;
+			font-family: var(--font-family-heading);
+			font-weight: 400;
+		}
 	}
 }
 footer.base--footer {

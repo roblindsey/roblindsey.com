@@ -4,5 +4,46 @@ permalink: /now/
 eleventyNavigation:
     key: /now
     order: 3
+date: git Last Modified
 ---
-<section class="now"></section>
+<article class="now">
+    <header class="page-intro">
+        <h1 class="page-title">{{ title }}</h1>
+        <p class="page-subtitle">Last Update: {{ page.date | postDate }}</p>
+    </header>
+    <div class="flow">
+        <section class="now-reading">
+            <h2>Reading</h2>
+            <p>Mostly reading fantasy these days, but I'm trying to pass the festering bolus of <em>Gone with the Wind</em>. I truly hate that book, but one of my life goals is to read all the Pulitzer Prize fiction winners, of which it is one. It is a book I believe should not exist, but I'll write more about it when I'm done and post a review.</p>
+            <ul class="now-reading-list">
+                {%- for book in nowReading -%}
+                    <li class="book">
+                        <img src="{{book.image}}" alt="{{ book.title }}">
+                        <p class="book__details">
+                            <a href="{{book.link}}"><strong class="book__title">{{ book.title }}</strong></a>
+                            <span class="book__author">by {{ book.author }}</span>
+                        </p>
+                    </li>
+                {%- endfor -%}
+            </ul>
+        </section>
+        <section class="now-listening">
+            <h2>Listening</h2>
+            <p><a href="https://open.spotify.com/album/36r0NLy7NH4Z14enk0EvF4?si=hjet2eJNSXiqb7bB4wTLFw">Complete Capitol Recordings of the Nat King Cole Trio on Spotify</a> - Good lord, the talent of Nat King Cole. These early recordings are so so great.</p>
+            <p><a href="https://bookriot.com/listen/shows/thepodcast/">Book Riot - The Podcast</a> - Best book podcast I've tried. Jeff and Rebecca's rapport is brilliant, and they talk about the kinds of books I'm interested in.</p>
+            <p><a href="https://podcasts.apple.com/us/podcast/the-ezra-klein-show/id1548604447">The Ezra Klein Show</a> - I know he's demonized by parts of the progressive left, which is where my beliefs tend to align. But the way he tries to understand and think through even the wildest MAGA bullshit has some value for me. YMMV</p>
+        </section>
+        <section class="now-watching">
+            <h2>Watching</h2>
+            <p><a href="https://www.justwatch.com/us/tv-show/what-we-do-in-the-shadows">What We Do in the Shadows</a> season 5</p>
+            <p><a href="https://www.justwatch.com/us/tv-show/mythic-quest-ravens-banquet">Mythic Quest</a> season 4</p>
+            <p>Too much YouTube: Coachella live streams, woodworking videos about sanding, Vlogbrothers for my sanity in Trumplandia, and Marvel Snap deck builds are some recent interests.</p>
+        </section>
+        <section class="now-other">
+            <h2>Other Stuff</h2>
+            <p>Playing the aforementioned <a href="https://www.marvelsnap.com/home">Marvel Snap</a></p>
+            <p>Messing around with this here website. Like this man says: <a href="https://ethanmarcotte.com/wrote/let-a-website-be-a-worry-stone/">let a website be a worry stone</a>.</p>
+            <p><a href="https://www.reddit.com/r/degoogle/">DeGoogling</a> and separating my digital life from big tech as much as possible. Fuck the techno-fascists and oligarchs.</p>
+        </section>
+    </div>
+</article>

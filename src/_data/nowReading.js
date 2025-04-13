@@ -3,7 +3,7 @@ import { XMLParser } from "fast-xml-parser";
 
 export default async function () {
 	let url =
-		"https://www.goodreads.com/review/list_rss/1665822?key=H39MSaWq7oSelYZqx5A8UxNiqfZWcfVKPJsJbi_xKLewsbTM&shelf=read&sort=date_read";
+		"https://www.goodreads.com/review/list_rss/1665822?key=H39MSaWq7oSelYZqx5A8UxNiqfZWcfVKPJsJbi_xKLewsbTM&shelf=currently-reading&sort=date_added";
 
 	let feed = await Fetch(url, {
 		duration: "1d",
@@ -31,8 +31,8 @@ export default async function () {
 		mappedBook.title = book.title;
 		mappedBook.author = book.author_name;
 		mappedBook.image = book.book_large_image_url;
-		mappedBook.link = extractFirstUrl(book.description);
 		mappedBook.dateRead = book.user_read_at;
+		mappedBook.link = extractFirstUrl(book.description);
 		mappedBook.rating = book.user_rating;
 		return mappedBook;
 	});

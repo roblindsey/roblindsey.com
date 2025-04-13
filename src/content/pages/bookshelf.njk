@@ -12,7 +12,7 @@ title: Bookshelf
                 <img src="{{book.image}}" alt="{{ book.title }}">
                 <p class="book__details">
                     <span class="book__date">{{ book.dateRead | dateForBookshelf }}</span>
-                    <strong class="book__title">{{ book.title }}</strong>
+                    <a href="{{book.link}}"><strong class="book__title">{{ book.title }}</strong></a>
                     <span class="book__author">by {{ book.author }}</span>
                 </p>
                 <p class="book__rating">{{ book.rating | ratingToStars }}</p>
@@ -26,7 +26,7 @@ title: Bookshelf
                 <a href="https://www.goodreads.com/user/show/1665822-rob-lindsey">Goodreads</a>
             </li>
             <li>
-                <a href="https://app.thestorygraph.com/profile/roblindsey77">Storygraph</a>
+                <a href="https://hardcover.app/@robble">Hardcover.app</a>
             </li>
         </ul>
     </div>
