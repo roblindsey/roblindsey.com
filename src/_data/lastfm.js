@@ -11,8 +11,7 @@ export default async function () {
 	}
 
 	const { data: recentTracksData } = await axios.get(
-		// eslint-disable-next-line no-undef
-		`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=clubrob&api_key=${process.env.LAST_FM_KEY}&format=json`,
+		`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=clubrob&api_key=${process.env.LAST_FM_KEY}&format=json&limit=10`,
 	);
 
 	const response = {

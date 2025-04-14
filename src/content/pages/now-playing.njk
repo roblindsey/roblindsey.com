@@ -13,10 +13,14 @@ permalink: /now-playing/
       {% for track in lastfm.recentTracks %} {%- if (loop.index < 6) -%}
       <li>
         <a href="{{ track.url }}" target="_blank">
+        {% if track.image[2]['#text'] %}
           <img
             src="{{ track.image[2]['#text'] }}"
             alt="{{ track.name }} - {{ track.artist['#text'] }}"
           />
+        {% else %}
+          <img src="/assets/images/icons/lastfm.svg" alt="{{ track.name }} - {{ track.artist['#text'] }}" style="filter: grayscale(90%);">
+        {% endif %}
           {{ track.name }} - {{ track.artist['#text'] }}
         </a>
       </li>
