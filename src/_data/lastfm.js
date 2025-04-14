@@ -15,7 +15,7 @@ export default async function () {
 	);
 
 	const response = {
-		recentTracks: recentTracksData?.recenttracks?.track,
+		recentTracks: recentTracksData?.recenttracks?.track?.slice(1),
 	};
 
 	asset.save(response, "json");
