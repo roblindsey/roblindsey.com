@@ -19,7 +19,7 @@ permalink: /now-playing/
             alt="{{ track.name }} - {{ track.artist['#text'] }}"
           />
         {% else %}
-          <img src="/assets/images/icons/lastfm.svg" alt="{{ track.name }} - {{ track.artist['#text'] }}" style="filter: grayscale(90%);">
+          <img src="/assets/images/icons/lastfm.svg" alt="{{ track.name }} - {{ track.artist['#text'] }}" style="filter: grayscale(90%);"  eleventy:formats="svg">
         {% endif %}
           {{ track.name }} - {{ track.artist['#text'] }}
         </a>
