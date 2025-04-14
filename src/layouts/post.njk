@@ -1,16 +1,20 @@
 ---
 layout: base
 ---
-<div class="base--main__post flow" style="--flow-space: 1.3em;">
-    <header class="page-intro">
-        {%- if featuredImage.alt|length %}
-            <figure class="post__featured-image">
-                <img src="{{ featuredImage.src }}" alt="{{ featuredImage.alt }}">
-                <figcaption><span>Photo by</span><a href="{{ featuredImage.url }}">{{ featuredImage.credit }}</a></figcaption>
-            </figure>
-        {% endif -%}
-        <h2 class="page-title">{{title}}</h2>
-        <p class="post__subtitle">{{date | postDate}}</p>
-    </header>
-    {{ content | safe }}
+
+<div class="base--main__post flow" style="--flow-space: 1.3em">
+  <header class="page-intro">
+    {%- if featuredImage.alt|length %}
+    <figure class="post__featured-image">
+      <img src="{{ featuredImage.src }}" alt="{{ featuredImage.alt }}" />
+      <figcaption>
+        <span>Photo by</span>
+        <a href="{{ featuredImage.url }}">{{ featuredImage.credit }}</a>
+      </figcaption>
+    </figure>
+    {% endif -%}
+    <h2 class="page-title">{{title}}</h2>
+    <p class="post__subtitle">{{date | postDate}}</p>
+  </header>
+  {{ content | safe }}
 </div>

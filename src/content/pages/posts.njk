@@ -2,27 +2,26 @@
 title: All Posts
 permalink: /posts/
 eleventyNavigation:
-    key: /posts
-    order: 1
+  key: /posts
+  order: 1
 ---
-<section class="post_list">
-    <header class="page-intro">
-        <h1 class="page-title">{{ title }}</h1>
-    </header>
-    <div class="">
-        <ul class="posts">
-            {% for entry in collections["posts"] %}
-                <li>
-                    <article class="post_list__post">
-                        <h3 class="post_list__post__heading">
-                            <a href="{{entry.url}}">{{ entry.data.title }}</a>
-                        </h3>
-                        <p class="post_list__post__text">
-                            {{ entry.data.excerpt }}
-                        </p>
-                    </article>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-</section>
+
+<article class="post_list">
+  <header class="page-intro">
+    <h1 class="page-title">{{ title }}</h1>
+  </header>
+  <div class="">
+    <ul class="posts">
+      {% for entry in collections["posts"] %}
+      <li>
+        <article class="post_list__post">
+          <h3 class="post_list__post__heading">
+            <a href="{{entry.url}}">{{ entry.data.title }}</a>
+          </h3>
+          <p class="post_list__post__text">{{ entry.data.excerpt }}</p>
+        </article>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</article>

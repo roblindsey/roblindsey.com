@@ -2,28 +2,37 @@
 title: Now Playing
 permalink: /now-playing/
 ---
-<section class="now-playing">
-    <header class="page-intro full-bleed">
-        <h1 class="page-title">{{ title }}</h1>
-    </header>
-    <div class="now-playing__recently-played flow">
-        <h3>Recently played from last.fm</h3>
-        <ul class="flow">
-            {% for track in lastfm.recentTracks %}
-                {%- if (loop.index < 6) -%}
-                    <li>
-                        <a href="{{ track.url }}" target="_blank">
-                            <img src="{{ track.image[2]['#text'] }}" alt="{{ track.name }} - {{ track.artist['#text'] }}">
-                            {{ track.name }} - {{ track.artist['#text'] }}
-                        </a>
-                    </li>
-                {%- endif -%}
-            {% endfor %}
-        </ul>
-    </div>
-    <hr>
-    <div class="now-playing__spotify-favorites flow">
-        <h3>Favorites from Spotify</h3>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7lpG6siink7XiAHnYt60w9?utm_source=generator"frameBorder="0" allowtransparency="true" allow="encrypted-media;" loading="lazy"></iframe>
-    </div>
-</section>
+
+<article class="now-playing">
+  <header class="page-intro full-bleed">
+    <h1 class="page-title">{{ title }}</h1>
+  </header>
+  <div class="now-playing__recently-played flow">
+    <h3>Recently played from last.fm</h3>
+    <ul class="flow">
+      {% for track in lastfm.recentTracks %} {%- if (loop.index < 6) -%}
+      <li>
+        <a href="{{ track.url }}" target="_blank">
+          <img
+            src="{{ track.image[2]['#text'] }}"
+            alt="{{ track.name }} - {{ track.artist['#text'] }}"
+          />
+          {{ track.name }} - {{ track.artist['#text'] }}
+        </a>
+      </li>
+      {%- endif -%} {% endfor %}
+    </ul>
+  </div>
+  <hr />
+  <div class="now-playing__spotify-favorites flow">
+    <h3>Favorites from Spotify</h3>
+    <iframe
+      style="border-radius: 12px"
+      src="https://open.spotify.com/embed/playlist/7lpG6siink7XiAHnYt60w9?utm_source=generator"
+      frameborder="0"
+      allowtransparency="true"
+      allow="encrypted-media;"
+      loading="lazy"
+    ></iframe>
+  </div>
+</article>

@@ -1,50 +1,48 @@
 ---
 title: Notes
 pagination:
-    data: collections.notes
-    size: 10
-    alias: note
-permalink: 'notes/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}'
+  data: collections.notes
+  size: 10
+  alias: note
+permalink: "notes/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}"
 eleventyNavigation:
-    key: /notes
-    order: 2
+  key: /notes
+  order: 2
 ---
-<section class="notes_list">
-    <header class="page-intro">
-        <h1 class="page-title">{{ title }}</h1>
-    </header>
-    <div class="">
-        <ul class="notes">
-            {%- for note in pagination.items %}
-                <li>
-                    <article class="note_list__post">
-                        <div class="note_list__post__text flow">
-                            {{ note.content | safe }}
-                        </div>
-                        <p class="note_list__post__date">
-                            <a href="{{note.url}}">{{ note.data.title }}</a>
-                        </p>
-                    </article>
-                    {% if loop.last %}
-                    {% else %}
-                        <hr>
-                    {% endif %}
-                </li>
-            {% endfor -%}
-        </ul>
+
+<article class="notes_list">
+  <header class="page-intro">
+    <h1 class="page-title">{{ title }}</h1>
+  </header>
+  <div class="">
+    <ul class="notes">
+      {%- for note in pagination.items %}
+      <li>
+        <article class="note_list__post">
+          <div class="note_list__post__text flow">
+            {{ note.content | safe }}
+          </div>
+          <p class="note_list__post__date">
+            <a href="{{note.url}}">{{ note.data.title }}</a>
+          </p>
+        </article>
+        {% if loop.last %} {% else %}
+        <hr />
+        {% endif %}
+      </li>
+      {% endfor -%}
+    </ul>
+  </div>
+  <nav class="notes_pagination">
+    <div>
+      {% if pagination.href.next %}
+      <a href="{{ pagination.href.next }}">Older Notes</a>
+      {% else %} {% endif %}
     </div>
-    <nav class="notes_pagination">
-        <div>
-            {% if pagination.href.next %}
-                <a href="{{ pagination.href.next }}">Older Notes</a>
-            {% else %}
-            {% endif %}
-        </div>
-        <div>
-            {% if pagination.href.previous %}
-                <a href="{{ pagination.href.previous }}">Newer Notes</a>
-            {% else %}
-            {% endif %}
-        </div>
-    </nav>
-</section>
+    <div>
+      {% if pagination.href.previous %}
+      <a href="{{ pagination.href.previous }}">Newer Notes</a>
+      {% else %} {% endif %}
+    </div>
+  </nav>
+</article>
