@@ -1,0 +1,47 @@
+---
+title: New Note
+permalink: /admin/new/note/
+---
+
+<article class="about">
+  <header class="page-intro">
+    <h1 class="page-title">{{ title }}</h1>
+  </header>
+  <section class="flow">
+    <div class="flow">
+      <p class="new-note-slug"></p>
+      <button class="copy-filename" onclick="copyFilename()">Copy Filename</button>
+    </div>
+    <hr>
+    <div>
+      <code>
+        <pre class="new-note-frontmatter language-markdown"></pre>
+      </code>
+      <button class="copy-frontmatter" onclick="copyFrontmater()">Copy Frontmatter</button>
+    </div>
+  </section>
+</article>
+<script>
+  const now = new Date();
+  const postDate = now.toISOString();
+  const slugDay = postDate.split("T")[0];
+  const slugTime = postDate.split("T")[1].slice(0, 8).replaceAll(":", "-");
+  const slug = `${slugDay}-${slugTime}`.replaceAll("-", "");
+  document.querySelector(".new-note-slug").textContent = `File name: ${slug}.md`;
+  document.querySelector(".new-note-frontmatter").textContent = `---
+date: ${postDate}
+---
+`;
+function copyFilename() {
+  const text = `${slug}.md`;
+
+  navigator.clipboard.writeText(text);
+  alert("copied " + text);
+}
+function copyFrontmater() {
+  const text = document.querySelector(".new-note-frontmatter").textContent;
+
+  navigator.clipboard.writeText(text);
+  alert("copied " + text);
+}
+</script>

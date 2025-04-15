@@ -122,3 +122,22 @@ img {
 b {
 	font-weight: bold !important;
 }
+button {
+	padding: 1em;
+	border: 0;
+	outline: 0;
+	background-color: var(--paynes-gray);
+	color: var(--off-white);
+	cursor: pointer;
+	text-transform: uppercase;
+	font-family: var(--font-family-heading);
+	text-box-trim: trim-both;
+	font-size: 0.9em;
+	letter-spacing: 0.03em;
+	font-weight: bold;
+}
+hr {
+	border: 0;
+	border-bottom: 1px solid var(--delft-blue);
+	margin: 2rem auto !important;
+}
