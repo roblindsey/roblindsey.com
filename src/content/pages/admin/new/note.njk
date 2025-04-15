@@ -8,12 +8,12 @@ permalink: /admin/new/note/
     <h1 class="page-title">{{ title }}</h1>
   </header>
   <section class="flow">
-    <div class="flow">
+    <div class="flow new-note-slug-wrap">
       <p class="new-note-slug"></p>
       <button class="copy-filename" onclick="copyFilename()">Copy Filename</button>
     </div>
     <hr>
-    <div>
+    <div class="flow new-note-frontmatter-wrap">
       <code>
         <pre class="new-note-frontmatter language-markdown"></pre>
       </code>
@@ -36,12 +36,28 @@ function copyFilename() {
   const text = `${slug}.md`;
 
   navigator.clipboard.writeText(text);
-  alert("copied " + text);
+
+  const wrapper = document.querySelector(".new-note-slug-wrap");
+  const messageContent = `<span class="copied-message">Copied!</span>`;
+  wrapper.insertAdjacentHTML("beforeend", messageContent);
+
+  setTimeout(function() {
+    const messageElement = document.querySelector(".copied-message");
+    messageElement.remove();
+  }, 5000);
 }
 function copyFrontmater() {
   const text = document.querySelector(".new-note-frontmatter").textContent;
 
   navigator.clipboard.writeText(text);
-  alert("copied " + text);
+  
+  const wrapper = document.querySelector(".new-note-frontmatter-wrap");
+  const messageContent = `<span class="copied-message">Copied!</span>`;
+  wrapper.insertAdjacentHTML("beforeend", messageContent);
+
+  setTimeout(function() {
+    const messageElement = document.querySelector(".copied-message");
+    messageElement.remove();
+  }, 5000);
 }
 </script>
