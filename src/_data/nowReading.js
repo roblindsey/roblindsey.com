@@ -1,41 +1,75 @@
-import Fetch from "@11ty/eleventy-fetch";
-import { XMLParser } from "fast-xml-parser";
+// eslint-disable-next-line no-unused-vars
+import dotenv from "dotenv/config";
+import { gql, request } from "graphql-request";
 
 export default async function () {
-	let url =
-		"https://www.goodreads.com/review/list_rss/1665822?key=H39MSaWq7oSelYZqx5A8UxNiqfZWcfVKPJsJbi_xKLewsbTM&shelf=currently-reading&sort=date_added";
+	const apiEndpoint = "https://api.hardcover.app/v1/graphql";
+	const allBooksQuery = gql`
+		query nowReading($userId: Int!) {
+			user_books(
+				distinct_on: date_added
+				limit: 20
+				where: {
+					user_id: { _eq: $userId }
+					user_book_status: { status: { _eq: "Currently Reading" } }
+				}
+				order_by: { date_added: desc_nulls_last }
+			) {
+				user_book_status {
+					id
+				}
+				book {
+					title
+					contributions {
+						author {
+							name
+						}
+					}
+					image {
+						url
+					}
+					slug
+				}
+			}
+		}
+	`;
+	const queryVariables = {
+		userId: process.env.HARDCOVER_USER_ID,
+	};
+	const requestHeaders = {
+		authorization: `Bearer ${process.env.HARDCOVER_TOKEN}`,
+	};
 
-	let feed = await Fetch(url, {
-		duration: "1d",
-		type: "text",
-	});
+	try {
+		const data = await request({
+			url: apiEndpoint,
+			document: allBooksQuery,
+			variables: queryVariables,
+			requestHeaders: requestHeaders,
+		});
+		console.log("Data fetched successfully");
 
-	function extractFirstUrl(text) {
-		// Regex to match a URL within an href attribute
-		const regex = /<a href="([^"]+)"/;
+		const mappedBooks = data.user_books.map((item) => {
+			const mappedBook = {};
+			mappedBook.title = item.book.title;
+			mappedBook.author = item.book.contributions
+				.map((item) => item.author.name)
+				.join(", ");
+			mappedBook.image = item.book.image.url;
+			mappedBook.link = `https://hardcover.app/books/${item.book.slug}`;
+			return mappedBook;
+		});
 
-		// Execute the regex
-		const match = regex.exec(text);
-
-		// Return the captured group (the URL) if found, otherwise null
-		return match ? match[1] : null;
+		return mappedBooks || [];
+	} catch (error) {
+		if (error.response?.errors) {
+			console.error(
+				"GraphQL errors:",
+				JSON.stringify(error.response.errors, null, 2),
+			);
+		} else {
+			console.error("Error:", error);
+		}
+		return [];
 	}
-
-	const parser = new XMLParser();
-	let json = parser.parse(feed);
-
-	let books = json.rss.channel.item;
-
-	let mappedBooks = books.slice(0, 20).map((book) => {
-		let mappedBook = {};
-		mappedBook.title = book.title;
-		mappedBook.author = book.author_name;
-		mappedBook.image = book.book_large_image_url;
-		mappedBook.dateRead = book.user_read_at;
-		mappedBook.link = extractFirstUrl(book.description);
-		mappedBook.rating = book.user_rating;
-		return mappedBook;
-	});
-
-	return mappedBooks;
 }
