@@ -8,6 +8,7 @@
 	picture,
 	img {
 		height: auto;
+		min-width: 148px;
 	}
 }
 .book__details {

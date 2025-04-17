@@ -8,7 +8,7 @@ title: Bookshelf
     <h1 class="page-title">{{ title }}</h1>
   </header>
   <div class="books-grid">
-    {%- for book in goodReads -%}
+    {%- for book in hardcoverApp -%}
     <div class="book">
       <img src="{{book.image}}" alt="{{ book.title }}" />
       <p class="book__details">
@@ -26,12 +26,12 @@ title: Bookshelf
     <h3>Find more of my reading</h3>
     <ul>
       <li>
+        <a href="https://hardcover.app/@robble">Hardcover.app</a>
+      </li>
+      <li>
         <a href="https://www.goodreads.com/user/show/1665822-rob-lindsey"
           >Goodreads</a
         >
-      </li>
-      <li>
-        <a href="https://hardcover.app/@robble">Hardcover.app</a>
       </li>
     </ul>
   </div>
