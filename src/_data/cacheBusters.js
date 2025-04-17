@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
+import dotenv from "dotenv/config";
 
 async function fromFile(hashPath) {
   try {
@@ -37,8 +38,13 @@ function _getHash(value) {
 
 // Generate hashes for assets to use for cache busting
 export default async () => {
+  const rootPath =
+    process.env.ELEVENTY_ENV === "prod"
+      ? "/var/www/html/roblindsey.com"
+      : "./public";
+
   return {
     // Generate a hash based on the minified css
-    styles: await fromFile("public/assets/css/style.css"),
+    styles: await fromFile(`${rootPath}/assets/css/style.css`),
   };
 };
