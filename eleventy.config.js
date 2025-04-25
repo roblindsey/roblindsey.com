@@ -1,8 +1,11 @@
 import { plugins } from "./config/plugins.js";
 import { filters } from "./config/filters.js";
 import { collections } from "./config/collections.js";
-import { deleteAsync } from "del";
+import { exec } from "node:child_process";
+import { promisify } from "node:util";
 import "dotenv/config";
+
+const execAsync = promisify(exec);
 
 export default async function (eleventyConfig) {
 	eleventyConfig.on("eleventy.before", async () => {
@@ -15,29 +18,24 @@ export default async function (eleventyConfig) {
 
 			console.log(`Cleaning output directory: ${outputPath}`);
 
-			// If in production, delete the contents rather than the directory itself
+			// If in production, use find to delete only contents
 			if (process.env.ELEVENTY_ENV === "prod") {
-				// Explicitly exclude the directory itself from deletion
-				const deletedPaths = await deleteAsync(
-					[
-						`${outputPath}/**`, // All contents including subdirectories
-						`!${outputPath}`, // Exclude the root directory itself
-					],
-					{ force: true },
+				// Use find command to delete contents but preserve the directory
+				const { stdout, stderr } = await execAsync(
+					`find ${outputPath} -mindepth 1 -delete`,
 				);
-				console.log(
-					`Deleted ${deletedPaths.length} files/folders from ${outputPath}`,
-				);
+
+				if (stderr) {
+					console.error(`Error: ${stderr}`);
+				} else {
+					console.log(`Successfully cleaned contents of ${outputPath}`);
+					if (stdout) console.log(stdout);
+				}
 			}
 		} catch (error) {
 			console.error("Error cleaning output directory:", error);
 		}
 	});
-
-	if (process.env.ELEVENTY_ENV === "prod") {
-		const delPath = deleteAsync([outputPath], { force: true });
-		console.log(delPath);
-	}
 
 	// Passthrough
 	eleventyConfig.addPassthroughCopy("src/assets/fonts");
