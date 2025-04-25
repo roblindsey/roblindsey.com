@@ -1,17 +1,37 @@
 import { plugins } from "./config/plugins.js";
 import { filters } from "./config/filters.js";
 import { collections } from "./config/collections.js";
-import { deleteSync } from "del";
+import { deleteAsync } from "del";
 import "dotenv/config";
 
 export default async function (eleventyConfig) {
-	const outputPath =
-		process.env.ELEVENTY_ENV === "prod"
-			? process.env.PROD_OUTPUT_PATH
-			: "public";
+	eleventyConfig.on("eleventy.before", async () => {
+		try {
+			// Determine output path based on environment
+			const outputPath =
+				process.env.ELEVENTY_ENV === "prod"
+					? process.env.PROD_OUTPUT_PATH
+					: "public";
+
+			console.log(`Cleaning output directory: ${outputPath}`);
+
+			// If in production, delete the contents rather than the directory itself
+			if (process.env.ELEVENTY_ENV === "prod") {
+				const deletedPaths = await deleteAsync(
+					[`${outputPath}/**/*`, `!${outputPath}/`],
+					{ force: true },
+				);
+				console.log(
+					`Deleted ${deletedPaths.length} files/folders from ${outputPath}`,
+				);
+			}
+		} catch (error) {
+			console.error("Error cleaning output directory:", error);
+		}
+	});
 
 	if (process.env.ELEVENTY_ENV === "prod") {
-		const delPath = deleteSync([outputPath], { force: true });
+		const delPath = deleteAsync([outputPath], { force: true });
 		console.log(delPath);
 	}
 
