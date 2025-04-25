@@ -3,9 +3,16 @@ tags: "book-review"
 title: "Book Review: Clockwork Boys"
 date: 2025-04-10T20:24:29.654Z
 permalink: /posts/book-review-clockwork-boys/index.html
-description: ""
+description: "A paladin, an assassin, a forger, and a scholar ride out of town. It’s not the start of a joke, but rather an espionage mission with deadly serious stakes."
 excerpt: ""
 timestamp: 1744316669
+bookMeta:
+  title: "Clockwork Boys"
+  author: "T. Kingfisher"
+  pubYear: 2017
+  rating: 4
+  hardcoverUrl: "https://hardcover.app/books/clockwork-boys"
+  isbn13: 9781614504061
 featuredImage:
   src: /assets/images/posts/2025/clockwork-boys-featured.jpg
   credit: Clockwork Boys

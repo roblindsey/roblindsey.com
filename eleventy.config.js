@@ -1,9 +1,20 @@
 import { plugins } from "./config/plugins.js";
 import { filters } from "./config/filters.js";
 import { collections } from "./config/collections.js";
+import { deleteSync } from "del";
 import "dotenv/config";
 
 export default async function (eleventyConfig) {
+	const outputPath =
+		process.env.ELEVENTY_ENV === "prod"
+			? process.env.PROD_OUTPUT_PATH
+			: "public";
+
+	if (process.env.ELEVENTY_ENV === "prod") {
+		const delPath = deleteSync(outputPath);
+		console.log(delPath);
+	}
+
 	// Passthrough
 	eleventyConfig.addPassthroughCopy("src/assets/fonts");
 	eleventyConfig.addPassthroughCopy("src/assets/images");

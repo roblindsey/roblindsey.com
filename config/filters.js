@@ -38,4 +38,34 @@ export const filters = {
 		}
 		return bodyClasses;
 	},
+	isbn13to10: (isbn13) => {
+		const normalized = isbn13.toString().replace(/[-\s]/g, "");
+
+		if (normalized.startsWith("978")) {
+			// Remove '978' prefix and the existing check digit
+			const digits = normalized.substring(3, 12);
+
+			// Calculate the check digit for ISBN-10
+			let sum = 0;
+			for (let i = 0; i < 9; i++) {
+				sum += (10 - i) * parseInt(digits.charAt(i));
+			}
+
+			// Determine the check digit (X is used if the result is 10)
+			let checkDigit = (11 - (sum % 11)) % 11;
+			checkDigit = checkDigit === 10 ? "X" : checkDigit.toString();
+
+			return digits + checkDigit;
+		}
+		return isbn13;
+	},
+	slugifyBookTitle: (title) => {
+		return title
+			.toLowerCase() // Convert to lowercase
+			.replace(/[^\w\s-]/g, "") // Remove special characters except spaces and hyphens
+			.replace(/\s+/g, "-") // Replace spaces with hyphens
+			.replace(/-+/g, "-") // Replace multiple hyphens with a single hyphen
+			.trim() // Remove whitespace from both ends
+			.replace(/^-+|-+$/g, ""); // Remove leading and trailing hyphens
+	},
 };

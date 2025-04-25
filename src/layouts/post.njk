@@ -16,5 +16,49 @@ layout: base
     <h2 class="page-title">{{title}}</h2>
     <p class="post__subtitle">{{date | postDate}}</p>
   </header>
-  {{ content | safe }}
+  {% if "book-review" in tags %} {% if bookMeta.title and bookMeta.author %}
+  <aside class="meta-box">
+    <ul>
+      <li>
+        <span>Title:</span>
+        <a href="{{bookMeta.hardcoverUrl}}">{{bookMeta.title}}</a>
+      </li>
+      <li><span>Author:</span> {{bookMeta.author}}</li>
+      <li><span>Pub. Year:</span> {{bookMeta.pubYear}}</li>
+      <li>
+        <span>My Stars:</span> {{bookMeta.rating | ratingToStars}} out of 5
+      </li>
+    </ul>
+    <hr>
+    <p>
+      <span>Buy:</span>
+      <a href="https://bookshop.org/book/{{ bookMeta.isbn13 }}"
+        ><img
+          eleventy:ignore
+          src="/assets/images/icons/bookshop-icon.svg"
+          alt="Bookshop.org icon"
+      /></a>
+      <a href="https://www.barnesandnoble.com/s/{{ bookMeta.isbn13 }}"
+        ><img
+          eleventy:ignore
+          src="/assets/images/icons/bn-icon.svg"
+          alt="Barnes & Noble icon"
+      /></a>
+      <a
+        href="https://www.kobo.com/us/en/search?query={{ bookMeta.title | slugifyBookTitle }}&fclanguages=en"
+        ><img
+          eleventy:ignore
+          src="/assets/images/icons/kobo-icon.svg"
+          alt="Rakuten Kobo icon"
+      /></a>
+      <a href="https://www.amazon.com/dp/{{ bookMeta.isbn13 | isbn13to10 }}?tag=onethingnew-20"
+        ><img
+          eleventy:ignore
+          src="/assets/images/icons/amazon-icon.svg"
+          alt="Amazon icon"
+      /></a>
+    </p>
+    <p class="affiliate-disclosure">Disclosure: I earn a percentage of sales made through my links to Amazon.</p>
+  </aside>
+  {% endif %} {% endif %} {{ content | safe }}
 </div>
