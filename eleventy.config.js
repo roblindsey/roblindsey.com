@@ -11,7 +11,7 @@ export default async function (eleventyConfig) {
 			: "public";
 
 	if (process.env.ELEVENTY_ENV === "prod") {
-		const delPath = deleteSync(outputPath);
+		const delPath = deleteSync([outputPath], { force: true });
 		console.log(delPath);
 	}
 
