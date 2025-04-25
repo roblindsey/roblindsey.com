@@ -17,8 +17,12 @@ export default async function (eleventyConfig) {
 
 			// If in production, delete the contents rather than the directory itself
 			if (process.env.ELEVENTY_ENV === "prod") {
+				// Explicitly exclude the directory itself from deletion
 				const deletedPaths = await deleteAsync(
-					[`${outputPath}/**/*`, `!${outputPath}/`],
+					[
+						`${outputPath}/**`, // All contents including subdirectories
+						`!${outputPath}`, // Exclude the root directory itself
+					],
 					{ force: true },
 				);
 				console.log(
