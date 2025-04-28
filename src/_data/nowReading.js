@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import dotenv from "dotenv/config";
+import "dotenv/config";
 import { gql, request } from "graphql-request";
 
 export default async function () {
