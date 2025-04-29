@@ -1,0 +1,107 @@
+---
+title: These are My Jams
+pagination:
+  data: collections.jams
+  size: 10
+  alias: jams
+permalink: /jams/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}
+eleventyNavigation:
+  key: /jams
+  order: 3
+---
+
+<article class="jams-list">
+  <header class="page-intro">
+    <h1 class="page-title">{{ title }}</h1>
+    <p class="page-subtitle">Play links provided by <a href="https://odesli.co">SongLink</a></p>
+  </header>
+  <ul class="jams">
+    {% for jam in jams %}
+    <li>
+      <div class="meta-box jam-list">
+        <div class="jams-list__jam flow">
+          <p class="timestamp">
+            <a href="{{jam.url}}">{{jam.date | postDate}}</a>
+          </p>
+          <p class="jams_list__jam__title">
+            <a href="{{jam.url}}"
+              >{{ jam.data.title }} by {{ jam.data.artist }}</a
+            >
+          </p>
+          <p>
+            <a href="{{jam.url}}"
+              ><img
+                src="{{jam.data.spotifyImageUrl}}"
+                alt="Cover for {{jam.data.title}} - {{jam.data.artist}}"
+            /></a>
+          </p>
+          <ul class="jam-streaming-list">
+            <li class="timestamp">Play:&nbsp;</li>
+            {% if jam.data.links.spotify %}
+            <li>
+              <a href="{{jam.data.links.spotify}}"
+                ><img
+                  src="/assets/images/icons/spotify-icon.svg"
+                  alt="Play on Spotify"
+              /></a>
+            </li>
+            {% endif %} {% if jam.data.links.appleMusic %}
+            <li>
+              <a href="{{jam.data.links.appleMusic}}"
+                ><img
+                  src="/assets/images/icons/apple-music-icon.svg"
+                  alt="Play on Apple Music"
+              /></a>
+            </li>
+            {% endif %} {% if jam.data.links.amazon %}
+            <li>
+              <a href="{{jam.data.links.amazon}}"
+                ><img
+                  src="/assets/images/icons/amazon-music-icon.svg"
+                  alt="Play on Amazon Music"
+              /></a>
+            </li>
+            {% endif %} {% if jam.data.links.youtubeMusic %}
+            <li>
+              <a href="{{jam.data.links.youtubeMusic}}"
+                ><img
+                  src="/assets/images/icons/youtube-music-icon.svg"
+                  alt="Play on YouTube Music"
+              /></a>
+            </li>
+            {% endif %} {% if jam.data.links.tidal %}
+            <li>
+              <a href="{{jam.data.links.tidal}}"
+                ><img
+                  src="/assets/images/icons/tidal-icon.svg"
+                  alt="Play on Tidal"
+              /></a>
+            </li>
+            {% endif %} {% if jam.data.links.soundcloud %}
+            <li>
+              <a href="{{jam.data.links.soundcloud}}"
+                ><img
+                  src="/assets/images/icons/soundcloud-icon.svg"
+                  alt="Play on SoundCloud"
+              /></a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  <nav class="notes_pagination">
+    <div>
+      {% if pagination.href.next %}
+      <a href="{{ pagination.href.next }}">Older Jams</a>
+      {% else %} {% endif %}
+    </div>
+    <div>
+      {% if pagination.href.previous %}
+      <a href="{{ pagination.href.previous }}">Newer Jams</a>
+      {% else %} {% endif %}
+    </div>
+  </nav>
+</article>

@@ -1,0 +1,7 @@
+{
+	"layout": "jam",
+	"eleventyComputed": {
+		"title": "{{songTitle}} - {{artist}}",
+		"permalink": "/jams/{{ date | theYear }}/{{ date | noteSlug }}/index.html"
+	}
+}

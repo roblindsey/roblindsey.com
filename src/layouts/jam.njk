@@ -1,0 +1,68 @@
+---
+layout: base
+---
+
+<div class="base--main__jam">
+  <header class="page-intro">
+    <h1 class="page-title">A Jam</h1>
+    <p class="page-subtitle">Play links provided by <a href="https://odesli.co">SongLink</a></p>
+  </header>
+  <div class="a-jam flow">
+    <p class="timestamp">{{ date | postDate }}</p>
+    <h2>{{songTitle}} by {{artist}}</h2>
+    <picture>
+      <img src="{{spotifyImageUrl}}" alt="Cover for {{title}} - {{artist}}" />
+    </picture>
+    <ul class="jam-streaming-list">
+      <li class="timestamp">Play:</li>
+      {% if links.spotify %}
+      <li>
+        <a href="{{links.spotify}}"
+          ><img
+            src="/assets/images/icons/spotify-icon.svg"
+            alt="Play on Spotify"
+        /></a>
+      </li>
+      {% endif %} {% if links.appleMusic %}
+      <li>
+        <a href="{{links.appleMusic}}"
+          ><img
+            src="/assets/images/icons/apple-music-icon.svg"
+            alt="Play on Apple Music"
+        /></a>
+      </li>
+      {% endif %} {% if links.amazon %}
+      <li>
+        <a href="{{links.amazon}}"
+          ><img
+            src="/assets/images/icons/amazon-music-icon.svg"
+            alt="Play on Amazon Music"
+        /></a>
+      </li>
+      {% endif %} {% if links.youtubeMusic %}
+      <li>
+        <a href="{{links.youtubeMusic}}"
+          ><img
+            src="/assets/images/icons/youtube-music-icon.svg"
+            alt="Play on YouTube Music"
+        /></a>
+      </li>
+      {% endif %} {% if links.tidal %}
+      <li>
+        <a href="{{links.tidal}}"
+          ><img src="/assets/images/icons/tidal-icon.svg" alt="Play on Tidal"
+        /></a>
+      </li>
+      {% endif %} {% if links.soundcloud %}
+      <li>
+        <a href="{{links.soundcloud}}"
+          ><img
+            src="/assets/images/icons/soundcloud-icon.svg"
+            alt="Play on SoundCloud"
+        /></a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  <div class="jam-commentary">{{ content | safe }}</div>
+</div>

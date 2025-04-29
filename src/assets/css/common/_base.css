@@ -38,6 +38,9 @@ header.base--header {
 				gap: 0.3em;
 				line-height: 1;
 				font-size: 0.85em;
+				picture {
+					flex-shrink: 0;
+				}
 				img {
 					width: 1em;
 					height: auto;
@@ -79,7 +82,7 @@ main.base--main {
 		}
 		.page-subtitle {
 			margin: 0;
-			font-size: 0.75em;
+			font-size: 0.7em;
 			font-family: var(--font-family-heading);
 			font-weight: 400;
 		}

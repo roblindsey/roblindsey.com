@@ -1,0 +1,7 @@
+.meta-box {
+	border: 1px solid lch(from var(--raisin-black) calc(l - 50) c h);
+	border-radius: 1rem;
+	background-color: lch(from var(--raisin-black) calc(l - 3) c h);
+	padding: 1.5rem 2.5rem;
+	margin: 0 1rem;
+}

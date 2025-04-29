@@ -97,6 +97,7 @@ p,
 li {
 	font-family: var(--font-family-body);
 	font-weight: 400;
+	word-wrap: break-word;
 	a {
 		text-decoration: underline;
 	}
@@ -105,6 +106,7 @@ a {
 	text-decoration-thickness: 0.05em;
 	text-underline-position: under;
 	color: currentColor;
+	word-wrap: break-word;
 	&:hover {
 		text-decoration: underline;
 	}

@@ -4,7 +4,7 @@ layout: base
 
 <div class="base--main__note">
   <header class="page-intro">
-    <h1 class="page-title">A Note</h1>
+    <h1 class="page-title">A Note from {{date | postDate }}</h1>
   </header>
-  {{ content | safe }}
+  <article>{{ content | safe }}</article>
 </div>

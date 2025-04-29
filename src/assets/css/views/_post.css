@@ -11,15 +11,10 @@
 	font-family: var(--font-family-heading);
 	font-weight: 400;
 }
-.meta-box {
+.meta-box.book-review {
 	float: right;
-	border: 1px solid lch(from var(--raisin-black) calc(l - 50) c h);
-	border-radius: 1rem;
-	background-color: lch(from var(--raisin-black) calc(l - 3) c h);
-	padding: 1.5rem 2.5rem;
-	font-size: 0.75rem;
-	margin: 0 1rem;
 	max-width: 300px;
+	font-size: 0.75rem;
 	ul {
 		margin: 0;
 		padding: 0;
@@ -49,7 +44,7 @@ p.affiliate-disclosure {
 	margin-top: 1rem;
 }
 @media screen and (max-width: 570px) {
-	.meta-box {
+	.meta-box.book-review {
 		float: unset;
 		max-width: 100vw;
 	}

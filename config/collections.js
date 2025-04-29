@@ -21,4 +21,11 @@ export const collections = {
 
 		return notes;
 	},
+	jams: (collectionApi) => {
+		let jams = collectionApi
+			.getFilteredByGlob("src/content/jams/**/*.md")
+			.reverse();
+
+		return jams;
+	},
 };
