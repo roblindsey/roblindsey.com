@@ -68,4 +68,10 @@ export const filters = {
 			.trim() // Remove whitespace from both ends
 			.replace(/^-+|-+$/g, ""); // Remove leading and trailing hyphens
 	},
+	jamsByTag: (jams, tag) => {
+		if (!tag) return jams;
+		return jams.filter(
+			(item) => item.data.tags && item.data.tags.includes(tag),
+		);
+	},
 };

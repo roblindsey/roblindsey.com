@@ -28,4 +28,12 @@ export const collections = {
 
 		return jams;
 	},
+	crucialJams: (collectionApi) => {
+		let crucialJams = collectionApi
+			.getFilteredByGlob("src/content/jams/**/*.md")
+			.filter((item) => {
+				return item.data.tags && item.data.tags.includes("crucial");
+			});
+		return crucialJams;
+	},
 };

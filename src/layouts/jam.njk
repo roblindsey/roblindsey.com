@@ -5,13 +5,18 @@ layout: base
 <div class="base--main__jam">
   <header class="page-intro">
     <h1 class="page-title">A Jam</h1>
-    <p class="page-subtitle">Play links provided by <a href="https://odesli.co">SongLink</a></p>
+    <p class="page-subtitle">
+      Play links provided by <a href="https://odesli.co">SongLink</a>
+    </p>
   </header>
   <div class="a-jam flow">
+    {% if tags and "crucial" in tags %}
+    <p class="single-crucial-jam"><a href="/jams/crucial">crucial</a></p>
+    {% endif %}
     <p class="timestamp">{{ date | postDate }}</p>
     <h2>{{songTitle}} by {{artist}}</h2>
     <picture>
-      <img src="{{spotifyImageUrl}}" alt="Cover for {{title}} - {{artist}}" />
+      <img src="{{imageUrl}}" alt="Cover for {{title}} - {{artist}}" />
     </picture>
     <ul class="jam-streaming-list">
       <li class="timestamp">Play:</li>
@@ -64,5 +69,5 @@ layout: base
       {% endif %}
     </ul>
   </div>
-  <div class="jam-commentary">{{ content | safe }}</div>
+  <div class="jam-commentary flow" style="--flow-space: 2rem">{{ content | safe }}</div>
 </div>

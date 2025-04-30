@@ -27,12 +27,16 @@
 	padding: 0;
 }
 .meta-box.jam-list {
+	position: relative;
 	margin-bottom: 3rem;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 }
 .jams-list__jam,
 .a-jam {
+	picture img {
+		width: 100%;
+	}
 	.timestamp {
 		margin-top: 0;
 		a {
@@ -47,4 +51,26 @@
 	h2 {
 		margin-top: 0.25em;
 	}
+}
+.single-crucial-jam,
+.crucial-jam {
+	font-family: var(--font-family-heading);
+	font-weight: 200;
+	font-size: 0.65rem;
+	letter-spacing: 0.1em;
+	text-box-trim: trim-both;
+	a {
+		background-color: black;
+		padding: 0.25em 0.5em;
+		text-decoration: none;
+	}
+	margin-bottom: 1rem;
+}
+.crucial-jam {
+	position: absolute;
+	right: 1rem;
+	top: 0.5rem;
+}
+.jam-commentary {
+	margin-top: 3rem;
 }

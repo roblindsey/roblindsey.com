@@ -82,9 +82,10 @@ main.base--main {
 		}
 		.page-subtitle {
 			margin: 0;
-			font-size: 0.7em;
+			font-size: 0.65em;
 			font-family: var(--font-family-heading);
-			font-weight: 400;
+			font-weight: 200;
+			letter-spacing: 0.1em;
 		}
 	}
 }

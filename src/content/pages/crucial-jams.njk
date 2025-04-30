@@ -1,19 +1,17 @@
 ---
-title: These are My Jams
+title: Crucial Jams
 pagination:
-  data: collections.jams
+  data: collections.crucialJams
   size: 10
   alias: jams
-permalink: /jams/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}
-eleventyNavigation:
-  key: /jams
-  order: 3
+permalink: /jams/crucial/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}
 ---
 
 <article class="jams-list">
   <header class="page-intro">
     <h1 class="page-title">{{ title }}</h1>
     <p class="page-subtitle">Play links provided by <a href="https://odesli.co">SongLink</a></p>
+    <p class="page-subtitle"><a href="https://app.crucialtracks.org/profile/robble">Crucial?</a></p>
   </header>
   <ul class="jams">
     {% for jam in jams %}
