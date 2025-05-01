@@ -31,6 +31,7 @@ export const collections = {
 	crucialJams: (collectionApi) => {
 		let crucialJams = collectionApi
 			.getFilteredByGlob("src/content/jams/**/*.md")
+			.reverse()
 			.filter((item) => {
 				return item.data.tags && item.data.tags.includes("crucial");
 			});
