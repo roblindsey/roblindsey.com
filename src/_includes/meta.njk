@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://roblindsey.com{{ page.url }}" />
 <meta
 	property="og:image"
-	content="{% if featuredImage.src %}{{ featuredImage.src }}{% else %}{{ site.info.imageUrl }}{% endif %}"
+	content="{{ page.url | getOgImage }}"
 />
 <meta
 	property="og:logo"
