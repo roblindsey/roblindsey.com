@@ -74,4 +74,10 @@ export const filters = {
 			(item) => item.data.tags && item.data.tags.includes(tag),
 		);
 	},
+	getOgImage: (url) => {
+		const encodedUrl = encodeURIComponent(
+			`https://roblindsey.com/opengraph${url}`,
+		);
+		return `https://v1.screenshot.11ty.dev/${encodedUrl}/opengraph/`;
+	},
 };

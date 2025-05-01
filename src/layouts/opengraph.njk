@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<style>
+			:root {
+				--raisin-black: hsla(225, 16%, 15%, 1);
+			}
+			@font-face {
+				font-family: "Nohemi";
+				src: url("/assets/fonts/Nohemi-Bold.woff2") format("woff2");
+				font-style: normal;
+				font-weight: 700;
+				text-rendering: optimizeLegibility;
+				font-display: swap;
+			}
+			body {
+				margin: 0;
+				padding: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background-color: lch(
+					from var(--raisin-black) calc(l - 3) c calc(h + 360)
+				);
+				font-family: "Nohemi";
+			}
+			main {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding: 30px;
+				position: relative;
+			}
+			h1 {
+				color: rgb(208, 214, 225);
+				font-size: 50px;
+				text-align: center;
+				margin-top: 4rem;
+			}
+			picture {
+				text-align: center;
+				margin: 0 auto;
+			}
+			picture img {
+				width: 180px;
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="card-title page">
+			{# PAGE #} {#
+			#} {% if post.data.contentType === "page" %}
+			<picture
+				><img src="{{site.info.imageUrl}}" alt="Rob Lindsey"
+			/></picture>
+			<h1>{{ post.url | safe }}</h1>
+			{% endif %} {# POST #} {% if post.data.contentType === "post" %}
+			<picture
+				><img src="{{site.info.imageUrl}}" alt="Rob Lindsey"
+			/></picture>
+			<h1>{{ post.data.title | safe }}</h1>
+			{% endif %} {# JAM #} {% if post.data.contentType === "jam" %}
+			<picture
+				><img src="{{site.info.imageUrl}}" alt="Rob Lindsey"
+			/></picture>
+			<h1>{{ post.data.title | safe }}</h1>
+			{% endif %} {# NOTE #} {% if post.data.contentType === "note" %}
+			<picture
+				><img src="{{site.info.imageUrl}}" alt="Rob Lindsey"
+			/></picture>
+			<h1>A Note from Rob</h1>
+			{% endif %}
+		</main>
+	</body>
+</html>
