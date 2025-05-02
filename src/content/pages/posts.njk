@@ -1,27 +1,57 @@
 ---
 title: All Posts
-permalink: /posts/
+permalink: /posts/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}
+pagination:
+  data: collections.posts
+  size: 5
+  alias: posts
 eleventyNavigation:
   key: /posts
   order: 1
 ---
 
-<article class="post_list">
+<article class="posts">
   <header class="page-intro">
     <h1 class="page-title">{{ title }}</h1>
   </header>
-  <div class="">
-    <ul class="posts">
-      {% for entry in collections["posts"] %}
-      <li>
-        <article class="post_list__post">
-          <h3 class="post_list__post__heading">
-            <a href="{{entry.url}}">{{ entry.data.title }}</a>
-          </h3>
-          <p class="post_list__post__text">{{ entry.data.excerpt }}</p>
+  <ul class="posts-list">
+    {% for post in posts %}
+    <li>
+      <div class="meta-box posts-list-wrap">
+        <article class="posts-list__post">
+          <div class="posts-list__inner">
+            {% if post.data.featuredImage.src %}
+            <picture
+              ><img src="{{post.data.featuredImage.src}}" alt="{{ post.data.title }}"
+            /></picture>
+            {% else %}
+            <picture
+              ><img src="{{site.info.imageUrl}}" alt="{{ post.data.title }}"
+            /></picture>
+            {% endif %}
+            <div class="posts-list__text-wrap">
+              <h3 class="posts-list__post__heading">
+                <a href="{{post.url}}">{{ post.data.title }}</a>
+              </h3>
+              <p class="page-subtitle">{{post.data.date | postDate}}</p>
+              <p class="posts-list__post__text">{{ post.data.description }}</p>
+            </div>
+          </div>
         </article>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  <nav class="notes_pagination">
+    <div>
+      {% if pagination.href.next %}
+      <a href="{{ pagination.href.next }}">Older Posts</a>
+      {% else %} {% endif %}
+    </div>
+    <div>
+      {% if pagination.href.previous %}
+      <a href="{{ pagination.href.previous }}">Newer Posts</a>
+      {% else %} {% endif %}
+    </div>
+  </nav>
 </article>

@@ -3,21 +3,18 @@
 		list-style: none;
 		padding: 0;
 		margin: 0;
-		li {
-			margin-bottom: 1rem;
-			hr {
-				margin: 2rem auto;
-				width: 60%;
-				border: 1px solid var(--paynes-gray);
-				border-bottom-width: 0;
-			}
-		}
 		a {
 			color: var(--lindsey-blue);
 		}
 	}
 }
 .note_list__post__text {
+	p:first-child {
+		margin-top: 0;
+	}
+}
+.meta-box.notes_list_meta {
+	margin-bottom: 3rem;
 }
 .note_list__post {
 }

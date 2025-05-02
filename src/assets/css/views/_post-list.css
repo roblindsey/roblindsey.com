@@ -1,1 +1,36 @@
-
+.posts-list {
+	list-style-type: none;
+	.meta-box.posts-list-wrap {
+		margin-bottom: 3rem;
+	}
+}
+.posts-list__inner {
+	display: flex;
+	align-items: flex-start;
+	column-gap: 1.75rem;
+	picture {
+		width: 50%;
+		aspect-ratio: 1;
+		background: black;
+		overflow: hidden;
+		img {
+			width: 100%;
+			aspect-ratio: 1;
+			object-fit: cover;
+			object-position: top;
+		}
+	}
+	.posts-list__text-wrap {
+		width: 50%;
+		h3 {
+			margin-top: 0;
+			font-size: 1.3rem;
+			a {
+				text-decoration: none;
+			}
+		}
+		.posts-list__post__text {
+			font-size: 0.8rem;
+		}
+	}
+}

@@ -18,15 +18,14 @@ eleventyNavigation:
   <ul class="notes">
     {% for note in notes %}
     <li>
-      <div class="note_list__post">
-        <div class="note_list__post__text flow">{{ note.content | safe }}</div>
-        <p class="note_list__post__date">
-          <a href="{{note.url}}">{{ note.data.title }}</a>
-        </p>
+      <div class="meta-box notes_list_meta">
+        <article class="note_list__post">
+          <div class="note_list__post__text flow">{{ note.content | safe }}</div>
+          <p class="note_list__post__date">
+            <a href="{{note.url}}">{{ note.data.title }}</a>
+          </p>
+        </article>
       </div>
-      {% if loop.last %} {% else %}
-      <hr />
-      {% endif %}
     </li>
     {% endfor -%}
   </ul>
