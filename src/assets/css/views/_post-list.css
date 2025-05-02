@@ -8,8 +8,10 @@
 	display: flex;
 	align-items: flex-start;
 	column-gap: 1.75rem;
-	picture {
+	a {
 		width: 50%;
+	}
+	picture {
 		aspect-ratio: 1;
 		background: black;
 		overflow: hidden;
@@ -31,6 +33,21 @@
 		}
 		.posts-list__post__text {
 			font-size: 0.8rem;
+		}
+	}
+}
+@media screen and (max-width: 600px) {
+	.posts-list__inner {
+		flex-direction: column;
+		align-items: center;
+		a {
+			width: 100%;
+		}
+		picture {
+			margin-bottom: 2rem;
+		}
+		.posts-list__text-wrap {
+			width: 100%;
 		}
 	}
 }

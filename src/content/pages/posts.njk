@@ -21,13 +21,13 @@ eleventyNavigation:
         <article class="posts-list__post">
           <div class="posts-list__inner">
             {% if post.data.featuredImage.src %}
-            <picture
+            <a href="{{post.url}}"><picture
               ><img src="{{post.data.featuredImage.src}}" alt="{{ post.data.title }}"
-            /></picture>
+            /></picture></a>
             {% else %}
-            <picture
+            <a href="{{post.url}}"><picture
               ><img src="{{site.info.imageUrl}}" alt="{{ post.data.title }}"
-            /></picture>
+            /></picture></a>
             {% endif %}
             <div class="posts-list__text-wrap">
               <h3 class="posts-list__post__heading">
