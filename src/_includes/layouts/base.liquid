@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		{% include "meta.njk" %}
+		{% include "meta.liquid" %}
 
 		<link rel="authorization_endpoint" href="https://indieauth.com/auth" />
 		<link rel="token_endpoint" href="https://tokens.indieauth.com/token" />
@@ -18,13 +18,16 @@
 			rel="apple-touch-icon"
 			href="/assets/images/icons/apple-touch-icon.png"
 		/>
-		<link rel="stylesheet" href="/assets/css/style.css?v={{ cacheBusters.stylesFromDate }}" />
+		<link
+			rel="stylesheet"
+			href="/assets/css/style.css?v={{ cacheBusters.stylesFromDate }}"
+		/>
 		<script src="/assets/js/app.js"></script>
 
-		{% include "analytics.njk" %} {% block head %}{% endblock %}
+		{% include "analytics.liquid" %} {% block head %}{% endblock %}
 		<title>
-			{% if title %}{{ title }} | {{ site.info.title }} {% else %}{{
-			site.info.title }} {% endif %}
+			{% if title %}{{ title }} | {{ site.title }} {% else %}{{
+			site.title }} {% endif %}
 		</title>
 	</head>
 	<body
@@ -41,13 +44,13 @@
 				}
 			</style>
 		</noscript>
-		{% include 'header.njk' %}
+		{% include 'header.liquid' %}
 		<nav class="base--nav">
-			{{ collections.all | eleventyNavigation | eleventyNavigationToHtml | safe
+			{{ collections.all | eleventyNavigation | eleventyNavigationToHtml 
 			}}
 		</nav>
-		<main class="base--main">{{ content | safe }}</main>
-		{% include "footer.njk" %}
+		<main class="base--main">{{ content  }}</main>
+		{% include "footer.liquid" %}
 		<script src="/assets/js/app.js"></script>
 	</body>
 </html>

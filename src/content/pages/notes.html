@@ -4,7 +4,7 @@ pagination:
   data: collections.notes
   size: 10
   alias: notes
-permalink: "notes/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif
+permalink: "notes/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber | plus: 1 }}/{% endif
 %}"
 eleventyNavigation:
   key: /notes
@@ -20,7 +20,7 @@ eleventyNavigation:
     <li>
       <div class="meta-box notes_list_meta">
         <article class="note_list__post">
-          <div class="note_list__post__text flow">{{ note.content | safe }}</div>
+          <div class="note_list__post__text flow">{{ note.content }}</div>
           <p class="note_list__post__date">
             <a href="{{note.url}}">{{ note.data.title }}</a>
           </p>

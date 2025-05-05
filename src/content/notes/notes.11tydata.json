@@ -1,5 +1,5 @@
 {
-	"layout": "note",
+	"layout": "layouts/note",
 	"eleventyComputed": {
 		"title": "{{ date | postDate }}",
 		"permalink": "/notes/{{ date | theYear }}/{{ date | noteSlug }}/index.html"

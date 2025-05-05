@@ -1,10 +1,10 @@
 ---
-layout: base
+layout: layouts/base
 ---
 
 <div class="base--main__note">
   <header class="page-intro">
     <h1 class="page-title">A Note from {{date | postDate }}</h1>
   </header>
-  <article>{{ content | safe }}</article>
+  <article>{{ content }}</article>
 </div>

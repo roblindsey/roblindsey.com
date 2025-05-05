@@ -1,10 +1,10 @@
 ---
-layout: base
+layout: layouts/base
 ---
 
 <div class="base--main__post flow" style="--flow-space: 1.3em">
   <header class="page-intro">
-    {%- if featuredImage.alt|length %}
+    {%- if featuredImage.alt.length %}
     <figure class="post__featured-image">
       <img src="{{ featuredImage.src }}" alt="{{ featuredImage.alt }}" />
       <figcaption>
@@ -60,5 +60,5 @@ layout: base
     </p>
     <p class="affiliate-disclosure">Disclosure: I earn a percentage of sales made through my links to Amazon and Bookshop.</p>
   </aside>
-  {% endif %} {% endif %} {{ content | safe }}
+  {% endif %} {% endif %} {{ content }}
 </div>

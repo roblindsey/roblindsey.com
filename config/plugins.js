@@ -31,3 +31,8 @@ export const plugins = {
 		metadata: {},
 	},
 };
+
+export function rssForLiquid(config) {
+	config.addLiquidFilter("dateToRfc3339", pluginRss.dateToRfc3339);
+	config.addLiquidFilter("dateToRfc822", pluginRss.dateToRfc822);
+}

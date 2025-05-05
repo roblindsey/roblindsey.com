@@ -1,4 +1,4 @@
-import { plugins } from "./config/plugins.js";
+import { plugins, rssForLiquid } from "./config/plugins.js";
 import { filters } from "./config/filters.js";
 import { collections } from "./config/collections.js";
 import { startup } from "./config/startup.js";
@@ -23,6 +23,7 @@ export default async function (eleventyConfig) {
 			plugins[name].metadata,
 		);
 	});
+	rssForLiquid(eleventyConfig);
 
 	// Add filters
 	Object.keys(filters).forEach((filterName) => {
@@ -42,7 +43,9 @@ export const config = {
 	dir: {
 		input: "src",
 		output: outputPath,
-		layouts: "layouts",
 	},
+	templateFormats: ["liquid", "md", "html", "njk"],
 	passthroughFileCopy: true,
+	htmlTemplateEngine: "liquid",
+	markdownTemplateEngine: "liquid",
 };

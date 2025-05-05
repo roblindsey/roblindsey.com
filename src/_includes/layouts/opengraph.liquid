@@ -49,25 +49,25 @@
 	</head>
 	<body>
 		<main class="card-title page">
-			{# PAGE #} {#
-			#} {% if post.data.contentType === "page" %}
+			{% # PAGE # %} {% #
+			# %} {% if post.data.contentType == "page" %}
 			<picture
-				><img src="{{site.info.imageUrl}}" alt="Rob Lindsey"
+				><img src="{{site.imageUrl}}" alt="Rob Lindsey"
 			/></picture>
-			<h1>{{ post.url | safe }}</h1>
-			{% endif %} {# POST #} {% if post.data.contentType === "post" %}
+			<h1>{{ post.url  }}</h1>
+			{% endif %} {% # POST # %} {% if post.data.contentType == "post" %}
 			<picture
-				><img src="{{site.info.imageUrl}}" alt="Rob Lindsey"
+				><img src="{{site.imageUrl}}" alt="Rob Lindsey"
 			/></picture>
-			<h1>{{ post.data.title | safe }}</h1>
-			{% endif %} {# JAM #} {% if post.data.contentType === "jam" %}
+			<h1>{{ post.data.title  }}</h1>
+			{% endif %} {% # JAM # %} {% if post.data.contentType == "jam" %}
 			<picture
-				><img src="{{site.info.imageUrl}}" alt="Rob Lindsey"
+				><img src="{{site.imageUrl}}" alt="Rob Lindsey"
 			/></picture>
-			<h1>{{ post.data.title | safe }}</h1>
-			{% endif %} {# NOTE #} {% if post.data.contentType === "note" %}
+			<h1>{{ post.data.title  }}</h1>
+			{% endif %} {% # NOTE # %} {% if post.data.contentType == "note" %}
 			<picture
-				><img src="{{site.info.imageUrl}}" alt="Rob Lindsey"
+				><img src="{{site.imageUrl}}" alt="Rob Lindsey"
 			/></picture>
 			<h1>A Note from Rob</h1>
 			{% endif %}

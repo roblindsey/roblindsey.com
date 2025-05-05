@@ -4,15 +4,15 @@
 <meta name="fediverse:creator" content="@robble@social.lol" />
 <meta
 	name="Description"
-	content="{% if excerpt %}{{ excerpt }}{% else %}{{ site.info.description }}{% endif %}"
+	content="{% if excerpt %}{{ excerpt }}{% else %}{{ site.description }}{% endif %}"
 />
 <meta
 	property="og:title"
-	content="{% if title %}{{ title }} | {{ site.info.title }}{% else %}{{ site.info.title }}{% endif %}"
+	content="{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}"
 />
 <meta
 	property="og:description"
-	content="{% if excerpt %}{{ excerpt}}{% else %}{{ site.info.description }}{% endif %}"
+	content="{% if excerpt %}{{ excerpt}}{% else %}{{ site.description }}{% endif %}"
 />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://roblindsey.com{{ page.url }}" />
