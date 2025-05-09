@@ -5,16 +5,16 @@
 		<link>{{ site.url | addPathPrefixToFullUrl }}</link>
 		<description>{{ site.description }}</description>
 		<language>en-us</language>
-		{%- for item in collections[collectionName] -%}
-	    {%- assign absolutePostUrl = item.url | htmlBaseUrl: site.url %}
+		{% for item in collections[collectionName] %}
+	    {% set absolutePostUrl = item.url | htmlBaseUrl(site.url) %}
 	    <item>
         <title>{{ item.data.title }}</title>
         <link>{{ absolutePostUrl }}</link>
-        <description>{{ item.content | renderTransforms: item.data.page, site.url }}</description>
+        <description>{{ item.content | renderTransforms(item.data.page, site.url) }}</description>
         <pubDate>{{ item.date | dateToRfc822 }}</pubDate>
         <dc:creator>{{ site.name }}</dc:creator>
         <guid>{{ absolutePostUrl }}</guid>
 	    </item>
-		{%- endfor -%}
+		{% endfor %}
 	</channel>
 </rss>
