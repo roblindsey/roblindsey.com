@@ -21,78 +21,7 @@ permalink: "/jams/crucial/{% if pagination.pageNumber > 0 %}page-{{ pagination.p
     {% for jam in jams %}
     <li>
       <div class="meta-box jam-list">
-        <div class="jams-list__jam flow">
-          {% if jam.data.tags and "crucial" in jam.data.tags %}
-          <p class="crucial-jam"><a href="/jams/crucial">crucial</a></p>
-          {% endif %}
-          <p class="timestamp">
-            <a href="{{jam.url}}">{{jam.data.date | postDate}}</a>
-          </p>
-          <p class="jams_list__jam__title">
-            <a href="{{jam.url}}"
-              >{{ jam.data.songTitle }} by {{ jam.data.artist }}</a
-            >
-          </p>
-          <p>
-            <a href="{{jam.url}}"
-              ><img
-                src="{{jam.data.imageUrl}}"
-                alt="Cover for {{jam.data.songTitle}} - {{jam.data.artist}}"
-            /></a>
-          </p>
-          <ul class="jam-streaming-list">
-            <li class="timestamp">Play:&nbsp;</li>
-            {% if jam.data.links.spotify %}
-            <li>
-              <a href="{{jam.data.links.spotify}}"
-                ><img
-                  src="/assets/images/icons/spotify-icon.svg"
-                  alt="Play on Spotify"
-              /></a>
-            </li>
-            {% endif %} {% if jam.data.links.appleMusic %}
-            <li>
-              <a href="{{jam.data.links.appleMusic}}"
-                ><img
-                  src="/assets/images/icons/apple-music-icon.svg"
-                  alt="Play on Apple Music"
-              /></a>
-            </li>
-            {% endif %} {% if jam.data.links.amazon %}
-            <li>
-              <a href="{{jam.data.links.amazon}}"
-                ><img
-                  src="/assets/images/icons/amazon-music-icon.svg"
-                  alt="Play on Amazon Music"
-              /></a>
-            </li>
-            {% endif %} {% if jam.data.links.youtubeMusic %}
-            <li>
-              <a href="{{jam.data.links.youtubeMusic}}"
-                ><img
-                  src="/assets/images/icons/youtube-music-icon.svg"
-                  alt="Play on YouTube Music"
-              /></a>
-            </li>
-            {% endif %} {% if jam.data.links.tidal %}
-            <li>
-              <a href="{{jam.data.links.tidal}}"
-                ><img
-                  src="/assets/images/icons/tidal-icon.svg"
-                  alt="Play on Tidal"
-              /></a>
-            </li>
-            {% endif %} {% if jam.data.links.soundcloud %}
-            <li>
-              <a href="{{jam.data.links.soundcloud}}"
-                ><img
-                  src="/assets/images/icons/soundcloud-icon.svg"
-                  alt="Play on SoundCloud"
-              /></a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
+        {% include "single-jam", jam: jam.data, jamUrl: jam.url %}
       </div>
     </li>
     {% endfor %}

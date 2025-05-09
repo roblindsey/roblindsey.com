@@ -1,7 +1,6 @@
 ---
 layout: layouts/base
 ---
-
 <div class="base--main__jam">
   <header class="page-intro">
     <h1 class="page-title">A Jam</h1>
@@ -20,7 +19,7 @@ layout: layouts/base
     </picture>
     <ul class="jam-streaming-list">
       <li class="timestamp">Play:</li>
-      {% if links.spotify %}
+      {% if links.spotify != blank %}
       <li>
         <a href="{{links.spotify}}"
           ><img
@@ -28,7 +27,7 @@ layout: layouts/base
             alt="Play on Spotify"
         /></a>
       </li>
-      {% endif %} {% if links.appleMusic %}
+      {% endif %} {% if links.appleMusic != blank %}
       <li>
         <a href="{{links.appleMusic}}"
           ><img
@@ -36,7 +35,7 @@ layout: layouts/base
             alt="Play on Apple Music"
         /></a>
       </li>
-      {% endif %} {% if links.amazon %}
+      {% endif %} {% if links.amazon != blank %}
       <li>
         <a href="{{links.amazon}}"
           ><img
@@ -44,7 +43,7 @@ layout: layouts/base
             alt="Play on Amazon Music"
         /></a>
       </li>
-      {% endif %} {% if links.youtubeMusic %}
+      {% endif %} {% if links.youtubeMusic != blank %}
       <li>
         <a href="{{links.youtubeMusic}}"
           ><img
@@ -52,13 +51,13 @@ layout: layouts/base
             alt="Play on YouTube Music"
         /></a>
       </li>
-      {% endif %} {% if links.tidal %}
+      {% endif %} {% if links.tidal != blank %}
       <li>
         <a href="{{links.tidal}}"
           ><img src="/assets/images/icons/tidal-icon.svg" alt="Play on Tidal"
         /></a>
       </li>
-      {% endif %} {% if links.soundcloud %}
+      {% endif %} {% if links.soundcloud != blank %}
       <li>
         <a href="{{links.soundcloud}}"
           ><img

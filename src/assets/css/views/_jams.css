@@ -33,7 +33,8 @@
 	padding-bottom: 2rem;
 }
 .jams-list__jam,
-.a-jam {
+.a-jam,
+.single-jam {
 	picture img {
 		width: 100%;
 	}
@@ -50,6 +51,15 @@
 .a-jam {
 	h2 {
 		margin-top: 0.25em;
+	}
+}
+.single-jam {
+	a {
+		text-decoration: none;
+	}
+	h2 {
+		margin-top: 0;
+		margin-bottom: 1rem;
 	}
 }
 .single-crucial-jam,
