@@ -20,6 +20,6 @@ featuredImage:
   alt: All the Sinners Bleed
 ---
 
-S.A. Cosby's All the Sinners Bleed is one of my favorite crime novels in years (ever?). Titus Crowne is an incredibly well-written protagonist, and the racial injustice he confronts in his small Virginia home town feels real.
+S.A. Cosby's _All the Sinners Bleed_ is one of my favorite crime novels in years (ever?). Titus Crowne is an incredibly well-written protagonist, and the racial injustice he confronts in his small Virginia home town feels real.
 
 His supporting cast is full of complex, realistic characters, which will seem familiar to anyone who has spent time in the small towns of the US South. The plot is razor sharp with some good twists and concludes with a satisfying end. Highly recommend.
