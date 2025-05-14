@@ -12,11 +12,12 @@
 	p:first-child {
 		margin-top: 0;
 	}
+	p img {
+		width: 100%;
+	}
 }
 .meta-box.notes_list_meta {
 	margin-bottom: 3rem;
-}
-.note_list__post {
 }
 .note_list__post__date {
 	font-size: 0.75rem;
