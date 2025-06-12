@@ -12,7 +12,8 @@
 	p:first-child {
 		margin-top: 0;
 	}
-	p img {
+	p img,
+	iframe {
 		width: 100%;
 	}
 }
