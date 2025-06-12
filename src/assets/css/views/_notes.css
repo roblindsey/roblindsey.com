@@ -41,3 +41,14 @@
 		font-size: 0.85rem;
 	}
 }
+.base--main__note {
+	article {
+		p img,
+		iframe {
+			width: 100%;
+		}
+		iframe {
+			max-height: 50vh;
+		}
+	}
+}
