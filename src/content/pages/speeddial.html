@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Start</title>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400&display=swap");
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			:root {
+				--bg: #40114d;
+				--surface: rgba(255, 255, 255, 0.06);
+				--surface-hover: rgba(255, 255, 255, 0.12);
+				--border: rgba(255, 255, 255, 0.1);
+				--text: rgba(255, 255, 255, 0.85);
+				--text-dim: rgba(255, 255, 255, 0.45);
+				--accent: #c084fc;
+				--radius: 12px;
+			}
+
+			html,
+			body {
+				height: 100%;
+				background-color: var(--bg);
+				font-family: "DM Sans", sans-serif;
+				font-weight: 300;
+				color: var(--text);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				min-height: 100vh;
+				padding: 2rem 1rem;
+			}
+
+			.wrapper {
+				width: 100%;
+				max-width: 900px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 2rem;
+			}
+
+			/* Links grid */
+			.links-grid {
+				display: grid;
+				grid-template-columns: repeat(6, 1fr);
+				gap: 0.5rem 1.75rem;
+				width: 100%;
+			}
+
+			.link-item {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 0.4rem;
+				padding: 0.6rem 0.4rem;
+				border-radius: var(--radius);
+				text-decoration: none;
+				color: var(--text);
+				font-size: 15px;
+				letter-spacing: 0.01em;
+				transition:
+					background 0.15s,
+					color 0.15s,
+					transform 0.15s;
+			}
+
+			.link-item:hover {
+				background: var(--surface-hover);
+				color: var(--text);
+				transform: translateY(-2px);
+			}
+
+			.link-item img {
+				width: 28px;
+				height: 28px;
+				border-radius: 4px;
+				display: block;
+				flex-shrink: 0;
+				opacity: 0;
+				transition: opacity 0.2s;
+			}
+
+			.link-item img.loaded {
+				opacity: 1;
+			}
+
+			/* Placeholder shown while icon loads or if it fails */
+			.link-item .icon-placeholder {
+				width: 28px;
+				height: 28px;
+				border-radius: 4px;
+				background: var(--surface);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 0.6rem;
+				font-weight: 400;
+				color: var(--text-dim);
+				flex-shrink: 0;
+				text-transform: uppercase;
+			}
+
+			@media (max-width: 640px) {
+				.links-grid {
+					grid-template-columns: repeat(4, 1fr);
+				}
+			}
+			@media (max-width: 420px) {
+				.links-grid {
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<nav class="links-grid" id="links-grid" aria-label="Bookmarks"></nav>
+		</div>
+
+		<script>
+			// ─── Config ──────────────────────────────────────────────────────────────────
+			// Bump CACHE_VERSION whenever you change the LINKS list to force a fresh fetch.
+			const CACHE_VERSION = "v1";
+			const CACHE_KEY = `favicon-cache-${CACHE_VERSION}`;
+			const FAVICON_API = (domain) =>
+				`https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
+
+			const LINKS = [
+				{
+					label: "Amazon",
+					href: "https://www.amazon.com/",
+					domain: "amazon.com",
+				},
+				{
+					label: "AOTY",
+					href: "https://www.albumoftheyear.org/",
+					domain: "albumoftheyear.org",
+				},
+				{ label: "AP News", href: "https://apnews.com/", domain: "apnews.com" },
+				{
+					label: "Apple Maps",
+					href: "https://beta.maps.apple.com/",
+					domain: "maps.apple.com",
+				},
+				{
+					label: "Bandcamp",
+					href: "https://bandcamp.com/",
+					domain: "bandcamp.com",
+				},
+				{ label: "BlueSky", href: "https://bsky.app/", domain: "bsky.app" },
+				{
+					label: "CBS Sports",
+					href: "https://www.cbssports.com/",
+					domain: "cbssports.com",
+				},
+				{ label: "Claude", href: "https://claude.ai/new", domain: "claude.ai" },
+				{
+					label: "Codeberg",
+					href: "https://codeberg.org/",
+					domain: "codeberg.org",
+				},
+				{
+					label: "Crucial Tracks",
+					href: "https://app.crucialtracks.org/dashboard",
+					domain: "crucialtracks.org",
+				},
+				{
+					label: "Discord",
+					href: "https://discord.com/channels/@me",
+					domain: "discord.com",
+				},
+				{ label: "eBay", href: "https://www.ebay.com/", domain: "ebay.com" },
+				{ label: "ESPN", href: "https://www.espn.com/", domain: "espn.com" },
+				{
+					label: "Facebook",
+					href: "https://facebook.com/",
+					domain: "facebook.com",
+				},
+				{
+					label: "Feedbin",
+					href: "https://feedbin.com/",
+					domain: "feedbin.com",
+				},
+				{ label: "FINVIZ", href: "https://finviz.com/", domain: "finviz.com" },
+				{ label: "Github", href: "https://github.com/", domain: "github.com" },
+				{
+					label: "Goodreads",
+					href: "https://www.goodreads.com/",
+					domain: "goodreads.com",
+				},
+				{
+					label: "Ground News",
+					href: "https://ground.news/",
+					domain: "ground.news",
+				},
+				{
+					label: "Hardcover",
+					href: "https://hardcover.app/@robble",
+					domain: "hardcover.app",
+				},
+				{
+					label: "Instagram",
+					href: "https://instagram.com/",
+					domain: "instagram.com",
+				},
+				{
+					label: "Last.fm",
+					href: "https://www.last.fm/user/clubrob",
+					domain: "last.fm",
+				},
+				{
+					label: "Mastodon",
+					href: "https://social.lol/home",
+					domain: "social.lol",
+				},
+				{ label: "NPR", href: "https://www.npr.org/", domain: "npr.org" },
+				{
+					label: "PGA Tour",
+					href: "https://www.pgatour.com/",
+					domain: "pgatour.com",
+				},
+				{
+					label: "Reddit",
+					href: "https://www.reddit.com/",
+					domain: "reddit.com",
+				},
+				{
+					label: "The Verge",
+					href: "https://www.theverge.com/",
+					domain: "theverge.com",
+				},
+				{
+					label: "Threads",
+					href: "https://www.threads.com/following",
+					domain: "threads.com",
+				},
+				{
+					label: "Twitch",
+					href: "https://www.twitch.tv/",
+					domain: "twitch.tv",
+				},
+				{
+					label: "Walmart",
+					href: "https://www.walmart.com/",
+					domain: "walmart.com",
+				},
+				{
+					label: "Yahoo!",
+					href: "https://www.yahoo.com/",
+					domain: "yahoo.com",
+				},
+				{
+					label: "Y! Finance",
+					href: "https://finance.yahoo.com/",
+					domain: "finance.yahoo.com",
+				},
+				{
+					label: "Y! Sports",
+					href: "https://sports.yahoo.com/",
+					domain: "sports.yahoo.com",
+				},
+				{
+					label: "YouTube",
+					href: "https://www.youtube.com/",
+					domain: "youtube.com",
+				},
+			];
+
+			// ─── Cache helpers ───────────────────────────────────────────────────────────
+			function loadCache() {
+				try {
+					return JSON.parse(localStorage.getItem(CACHE_KEY) || "{}");
+				} catch {
+					return {};
+				}
+			}
+
+			function saveCache(cache) {
+				try {
+					localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+				} catch {
+					// localStorage full or unavailable — silently skip
+				}
+			}
+
+			// Fetch a favicon and convert to a base64 data URL via canvas so it can be
+			// stored in localStorage. Falls back to the raw URL if CORS blocks the canvas.
+			function fetchToDataURL(url) {
+				return new Promise((resolve, reject) => {
+					const img = new Image();
+					img.crossOrigin = "anonymous";
+					img.onload = () => {
+						try {
+							const canvas = document.createElement("canvas");
+							canvas.width = img.naturalWidth || 32;
+							canvas.height = img.naturalHeight || 32;
+							canvas.getContext("2d").drawImage(img, 0, 0);
+							resolve(canvas.toDataURL("image/png"));
+						} catch {
+							// Canvas tainted by CORS — return the raw URL; won't be persisted
+							resolve(url);
+						}
+					};
+					img.onerror = () => reject(new Error(`Failed: ${url}`));
+					img.src = url;
+				});
+			}
+
+			// ─── Build grid ──────────────────────────────────────────────────────────────
+			const grid = document.getElementById("links-grid");
+			const cache = loadCache();
+			let dirty = false;
+
+			// Render all links immediately with letter placeholders, then resolve icons.
+			const items = LINKS.map(({ label, href, domain }) => {
+				const a = document.createElement("a");
+				a.className = "link-item";
+				a.href = href;
+				a.rel = "noopener noreferrer";
+
+				const placeholder = document.createElement("span");
+				placeholder.className = "icon-placeholder";
+				placeholder.textContent = label.charAt(0);
+
+				const img = document.createElement("img");
+				img.alt = "";
+				img.width = 28;
+				img.height = 28;
+
+				img.addEventListener("load", () => {
+					img.classList.add("loaded");
+					placeholder.style.display = "none";
+				});
+				img.addEventListener("error", () => {
+					img.style.display = "none"; // keep letter placeholder visible
+				});
+
+				a.appendChild(placeholder);
+				a.appendChild(img);
+				a.appendChild(document.createTextNode(label));
+				grid.appendChild(a);
+
+				return { img, domain };
+			});
+
+			// ─── Resolve icons ───────────────────────────────────────────────────────────
+			async function resolveIcons() {
+				const toFetch = [];
+
+				for (const { img, domain } of items) {
+					if (cache[domain]) {
+						img.src = cache[domain]; // instant — no network
+					} else {
+						toFetch.push({ img, domain });
+					}
+				}
+
+				// Fetch all missing icons concurrently
+				await Promise.allSettled(
+					toFetch.map(async ({ img, domain }) => {
+						const url = FAVICON_API(domain);
+						try {
+							const dataURL = await fetchToDataURL(url);
+							img.src = dataURL;
+							cache[domain] = dataURL;
+							dirty = true;
+						} catch {
+							img.src = url; // best-effort fallback, not cached
+						}
+					}),
+				);
+
+				if (dirty) saveCache(cache);
+			}
+
+			resolveIcons();
+		</script>
+	</body>
+</html>
