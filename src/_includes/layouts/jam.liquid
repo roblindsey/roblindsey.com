@@ -5,7 +5,8 @@ layout: layouts/base
   <header class="page-intro">
     <h1 class="page-title">A Jam</h1>
     <p class="page-subtitle">
-      Play links provided by <a href="https://odesli.co">SongLink</a>
+      Play links from <a href="https://www.crucialtracks.org">Crucial Tracks</a>
+      and <a href="https://odesli.co">Songlink</a>
     </p>
   </header>
   <div class="a-jam flow">
@@ -33,6 +34,25 @@ layout: layouts/base
           ><img
             src="/assets/images/icons/apple-music-icon.svg"
             alt="Play on Apple Music"
+        /></a>
+      </li>
+      {% endif %} {% if links.bandcamp != blank %}
+      <li>
+        <a href="{{links.bandcamp}}"
+          ><img
+            src="/assets/images/icons/bandcamp-icon.svg"
+            alt="Listen on Bandcamp"
+            eleventy:ignore
+        /></a>
+      </li>
+      {% endif %} {% if links.songlink != blank %}
+      <li>
+        <a href="{{links.songlink}}"
+          ><img
+            src="/assets/images/icons/songlink-icon.png"
+            alt="All streaming platforms on Songlink"
+            eleventy:widths="56"
+            eleventy:formats="webp,png"
         /></a>
       </li>
       {% endif %} {% if links.amazon != blank %}

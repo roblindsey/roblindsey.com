@@ -1,35 +1,31 @@
-// eslint-disable-next-line no-unused-vars
+import Fetch from "@11ty/eleventy-fetch";
+import { cacheDuration } from "../../config/utilities/cacheDuration.js";
 import "dotenv/config";
-import axios from "axios";
-import { AssetCache } from "@11ty/eleventy-fetch";
+
+// The now-playing page renders five tracks and the footer shows one. Six keeps a
+// spare without caching a response full of tracks nothing ever displays.
+const TRACK_COUNT = 6;
 
 export default async function () {
-	const asset = new AssetCache("lastfm");
-	if (asset.isCacheValid("3m")) {
-		return asset.getCachedValue();
-	}
+	// Last.fm prepends a currently-playing track *in addition to* `limit`, so
+	// asking for six still leaves six once that entry is filtered out.
+	const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=clubrob&api_key=${process.env.LAST_FM_KEY}&format=json&limit=${TRACK_COUNT}`;
 
 	try {
-		console.log("Fetching new Last.fm data...");
-		const { data: recentTracksData } = await axios.get(
-			`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=clubrob&api_key=${process.env.LAST_FM_KEY}&format=json&limit=10`,
-		);
+		const recentTracksData = await Fetch(url, {
+			// Fresh on a real build; frozen while developing so saving a file
+			// doesn't re-hit Last.fm. On failure eleventy-fetch serves the last
+			// good response rather than throwing.
+			duration: cacheDuration("5m", "1d"),
+			type: "json",
+		});
 
-		const tracks = recentTracksData?.recenttracks?.track?.slice(1) || [];
-
-		// Log image URLs for debugging
-		// console.log("\n===== LAST.FM IMAGE URLS =====");
-		// tracks.forEach((track, index) => {
-		// 	console.log(
-		// 		`Track ${index + 1}: ${track.name} - ${track.artist["#text"]}`,
-		// 	);
-		// 	if (track.image && track.image[2]) {
-		// 		console.log(`Image URL: ${track.image[2]["#text"]}`);
-		// 	} else {
-		// 		console.log("No image URL found");
-		// 	}
-		// 	console.log("-------------------");
-		// });
+		// Drop the currently-playing track by its flag rather than its position.
+		// That entry only exists while something is playing, so slicing blind
+		// discarded the most recent real scrobble whenever it wasn't.
+		const tracks = (recentTracksData?.recenttracks?.track || [])
+			.filter((track) => !track["@attr"]?.nowplaying)
+			.slice(0, TRACK_COUNT);
 
 		const processedTracks = tracks.map((track) => {
 			const processedTrack = { ...track };
@@ -52,15 +48,9 @@ export default async function () {
 			return processedTrack;
 		});
 
-		const response = {
-			recentTracks: processedTracks,
-		};
-
-		asset.save(response, "json");
-		return response;
+		return { recentTracks: processedTracks };
 	} catch (error) {
-		console.error("Error fetching Last.fm data:", error);
-
+		console.error("Error fetching Last.fm data:", error.message);
 		return { recentTracks: [] };
 	}
 }

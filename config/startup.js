@@ -1,11 +1,7 @@
 import { exec } from "node:child_process";
 import { promisify } from "node:util";
 import fs from "fs";
-import {
-	getSongInfo,
-	getAppleMusicUrl,
-	extractMusicLinks,
-} from "./utilities/songData.js";
+import { getFeedItems, jamSlug, toJam } from "./utilities/crucialTracks.js";
 import "dotenv/config";
 
 const execAsync = promisify(exec);
@@ -40,58 +36,62 @@ export const startup = {
 		}
 	},
 	checkCrucialTracks: async () => {
+		// This writes markdown files as a side effect, so it has no business
+		// running on watch/serve rebuilds that fire on every file save.
+		// ELEVENTY_RUN_MODE is "build" | "watch" | "serve".
+		if (process.env.ELEVENTY_RUN_MODE !== "build") {
+			return;
+		}
 		try {
-			const feedUrl = "https://app.crucialtracks.org/profile/robble/feed";
-			const appleMusicUrl = await getAppleMusicUrl(feedUrl);
-			const songData = await getSongInfo(appleMusicUrl.url, extractMusicLinks);
-			const jamContent = appleMusicUrl.content;
-			const postDate = new Date(appleMusicUrl.pubDate);
-			const postDateIso = postDate.toISOString();
-			const slugDay = postDateIso.split("T")[0];
-			const slugTime = postDateIso
-				.split("T")[1]
-				.slice(0, 8)
-				.replaceAll(":", "-");
-			const slug = `${slugDay}-${slugTime}`.replaceAll("-", "");
-			const year = postDate.getFullYear();
+			// Reconcile the whole feed against what's on disk rather than only
+			// checking the newest entry, so nothing is lost if several tracks are
+			// posted between builds — or if a build was broken for a while.
+			const items = await getFeedItems();
+			let added = 0;
 
-			// prettier-ignore
-			const jamFileContents = `---
-date: ${postDateIso}
-songTitle: "${songData.title}"
-artist: "${songData.artist}"
-imageUrl: "${songData.imageUrl}"
+			for (const item of items) {
+				const jam = await toJam(item);
+				if (!jam) {
+					continue;
+				}
+
+				const year = jam.date.getFullYear();
+				const yearDir = `./src/content/jams/${year}`;
+				const filePath = `${yearDir}/${jamSlug(jam.date)}.md`;
+
+				// The file existing is the record of "already ingested".
+				if (fs.existsSync(filePath)) {
+					continue;
+				}
+
+				const linkLines = Object.entries(jam.links)
+					.map(([platform, url]) => `  ${platform}: "${url}"`)
+					.join("\n");
+
+				// prettier-ignore
+				const jamFileContents = `---
+date: ${jam.date.toISOString()}
+songTitle: ${JSON.stringify(jam.songTitle)}
+artist: ${JSON.stringify(jam.artist)}
+imageUrl: "${jam.imageUrl}"
 tags: ["crucial"]
 links:
-  spotify: "${songData.links.spotify}"
-  appleMusic: "${songData.links.appleMusic}"
-  amazon: "${songData.links.amazon}"
-  youtubeMusic: "${songData.links.youtubeMusic}"
-  tidal: "${songData.links.tidal}"
-  soundcloud: "${songData.links.soundcloud}"
+${linkLines}
 ---
-${jamContent}
-		`;
+${jam.content}
+`;
 
-			const jamsDir = "./src/content/jams";
-			const yearDir = `${jamsDir}/${year}`;
-			if (!fs.existsSync(yearDir)) {
 				fs.mkdirSync(yearDir, { recursive: true });
-			}
-
-			const filePath = `${yearDir}/${slug}.md`;
-			try {
 				fs.writeFileSync(filePath, jamFileContents, { flag: "wx" });
 				console.log(`Added new Crucial Track: ${filePath}`);
-			} catch (fileError) {
-				if (fileError.code === "EEXIST") {
-					console.log(`File already exists: ${filePath}`);
-				} else {
-					throw fileError;
-				}
+				added += 1;
+			}
+
+			if (added === 0) {
+				console.log("Crucial Tracks: nothing new in the feed.");
 			}
 		} catch (error) {
-			console.error("Error in checkCrucialTracks:", error);
+			console.error("Error in checkCrucialTracks:", error.message);
 		}
 	},
 };

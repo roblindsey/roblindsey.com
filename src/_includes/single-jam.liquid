@@ -23,13 +23,13 @@
   {% endif %}
   <ul class="jam-streaming-list">
     <li class="timestamp">Play:</li>
-    {% if jam.links.spotify != empty %}
+    {% if jam.links.spotify != blank %}
     <li>
       <a href="{{jam.links.spotify}}"
         ><img src="/assets/images/icons/spotify-icon.svg" alt="Play on Spotify"
       /></a>
     </li>
-    {% endif %} {% if jam.links.appleMusic != empty %}
+    {% endif %} {% if jam.links.appleMusic != blank %}
     <li>
       <a href="{{jam.links.appleMusic}}"
         ><img
@@ -37,7 +37,26 @@
           alt="Play on Apple Music"
       /></a>
     </li>
-    {% endif %} {% if jam.links.amazon != empty %}
+    {% endif %} {% if jam.links.bandcamp != blank %}
+    <li>
+      <a href="{{jam.links.bandcamp}}"
+        ><img
+          src="/assets/images/icons/bandcamp-icon.svg"
+          alt="Listen on Bandcamp"
+          eleventy:ignore
+      /></a>
+    </li>
+    {% endif %} {% if jam.links.songlink != blank %}
+    <li>
+      <a href="{{jam.links.songlink}}"
+        ><img
+          src="/assets/images/icons/songlink-icon.png"
+          alt="All streaming platforms on Songlink"
+          eleventy:widths="56"
+          eleventy:formats="webp,png"
+      /></a>
+    </li>
+    {% endif %} {% if jam.links.amazon != blank %}
     <li>
       <a href="{{jam.links.amazon}}"
         ><img
@@ -45,7 +64,7 @@
           alt="Play on Amazon Music"
       /></a>
     </li>
-    {% endif %} {% if jam.links.youtubeMusic != empty %}
+    {% endif %} {% if jam.links.youtubeMusic != blank %}
     <li>
       <a href="{{jam.links.youtubeMusic}}"
         ><img
@@ -53,13 +72,13 @@
           alt="Play on YouTube Music"
       /></a>
     </li>
-    {% endif %} {% if jam.links.tidal != empty %}
+    {% endif %} {% if jam.links.tidal != blank %}
     <li>
       <a href="{{jam.links.tidal}}"
         ><img src="/assets/images/icons/tidal-icon.svg" alt="Play on Tidal"
       /></a>
     </li>
-    {% endif %} {% if jam.links.soundcloud != empty %}
+    {% endif %} {% if jam.links.soundcloud != blank %}
     <li>
       <a href="{{jam.links.soundcloud}}"
         ><img
