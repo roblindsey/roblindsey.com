@@ -3,6 +3,8 @@ body {
 	position: relative;
 	min-height: 100vh;
 	color: var(--french-gray);
+	/* Lets full-bleed elements size to the body with cqi. Unlike vw, cqi excludes the scrollbar. */
+	container-type: inline-size;
 }
 
 header.base--header {
@@ -71,8 +73,8 @@ main.base--main {
 	margin: 0 auto;
 	padding: 3rem 1rem 200px 1rem;
 	.page-intro {
-		margin: 0 calc(50% - 50vw) 3rem;
-		padding: 2.75rem calc(50vw - 50%);
+		margin: 0 calc(50% - 50cqi) 3rem;
+		padding: 2.75rem calc(50cqi - 50%);
 		.page-title {
 			margin: 0;
 			color: var(--french-gray);
