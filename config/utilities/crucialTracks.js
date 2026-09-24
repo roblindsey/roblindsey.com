@@ -63,17 +63,46 @@ export function findBandcampEmbed(contentHtml = "") {
 	return match ? match[1] : null;
 }
 
+export const CONTENT_TIME_ZONE = "America/New_York";
+
 /**
- * Builds the jam filename slug from a publish date: 2026-02-27T20:23:48Z
- * becomes 20260227202348, matching the existing jam files.
+ * Year and filename slug for a date in New York time: 2026-02-27T20:23:48Z
+ * becomes { year: "2026", slug: "20260227152348" }. The jam's URL is built
+ * from its folder and filename, so this decides the URL.
  * @param {Date} date
- * @returns {string}
+ * @returns {{year: string, slug: string}}
  */
-export function jamSlug(date) {
+export function jamPath(date) {
+	const parts = Object.fromEntries(
+		new Intl.DateTimeFormat("en-US", {
+			timeZone: CONTENT_TIME_ZONE,
+			year: "numeric",
+			month: "2-digit",
+			day: "2-digit",
+			hour: "2-digit",
+			minute: "2-digit",
+			second: "2-digit",
+			hourCycle: "h23",
+		})
+			.formatToParts(date)
+			.map(({ type, value }) => [type, value]),
+	);
+	const { year, month, day, hour, minute, second } = parts;
+	return { year, slug: `${year}${month}${day}${hour}${minute}${second}` };
+}
+
+/**
+ * The UTC slug that jams were named with before the switch to New York time,
+ * so already-ingested tracks are not written a second time.
+ * @param {Date} date
+ * @returns {{year: string, slug: string}}
+ */
+export function legacyJamPath(date) {
 	const iso = date.toISOString();
-	const day = iso.split("T")[0];
-	const time = iso.split("T")[1].slice(0, 8);
-	return `${day}${time}`.replaceAll("-", "").replaceAll(":", "");
+	return {
+		year: String(date.getUTCFullYear()),
+		slug: iso.slice(0, 19).replaceAll("-", "").replaceAll(":", "").replace("T", ""),
+	};
 }
 
 /**
@@ -126,6 +155,7 @@ export default {
 	getFeedItems,
 	resolveBandcampUrl,
 	findBandcampEmbed,
-	jamSlug,
+	jamPath,
+	legacyJamPath,
 	toJam,
 };

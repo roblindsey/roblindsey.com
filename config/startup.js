@@ -1,7 +1,12 @@
 import { exec } from "node:child_process";
 import { promisify } from "node:util";
 import fs from "fs";
-import { getFeedItems, jamSlug, toJam } from "./utilities/crucialTracks.js";
+import {
+	getFeedItems,
+	jamPath,
+	legacyJamPath,
+	toJam,
+} from "./utilities/crucialTracks.js";
 import "dotenv/config";
 
 const execAsync = promisify(exec);
@@ -55,12 +60,19 @@ export const startup = {
 					continue;
 				}
 
-				const year = jam.date.getFullYear();
+				const { year, slug } = jamPath(jam.date);
 				const yearDir = `./src/content/jams/${year}`;
-				const filePath = `${yearDir}/${jamSlug(jam.date)}.md`;
+				const filePath = `${yearDir}/${slug}.md`;
+				// Older jams used a UTC slug, filed under either year folder.
+				const legacy = legacyJamPath(jam.date);
+				const candidates = [
+					filePath,
+					`./src/content/jams/${legacy.year}/${legacy.slug}.md`,
+					`${yearDir}/${legacy.slug}.md`,
+				];
 
 				// The file existing is the record of "already ingested".
-				if (fs.existsSync(filePath)) {
+				if (candidates.some((candidate) => fs.existsSync(candidate))) {
 					continue;
 				}
 
