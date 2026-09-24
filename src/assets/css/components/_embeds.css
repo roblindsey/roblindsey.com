@@ -4,3 +4,80 @@ iframe[src*="open.spotify.com"] {
     min-height: 380px;
 }
 
+iframe.embed--youtube {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
+}
+iframe.embed--youtube-short {
+	aspect-ratio: 1 / 1.5;
+}
+.link-card {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	padding: 0.75rem;
+	border: 1px solid lch(from var(--raisin-black) calc(l + 15) c h);
+	border-radius: 0.75rem;
+	background-color: lch(from var(--raisin-black) calc(l + 4) c h);
+	color: inherit;
+	text-decoration: none;
+	&:hover,
+	&:focus-visible {
+		border-color: var(--lindsey-blue);
+	}
+}
+/* The image transform wraps the <img> in a <picture>, which becomes the flex item. */
+.link-card > picture,
+.link-card > .link-card__image {
+	flex: 0 0 7rem;
+}
+.link-card__image {
+	display: block;
+	width: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	height: auto;
+	border-radius: 0.5rem;
+}
+.link-card__body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	min-width: 0;
+}
+.link-card__site {
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--lindsey-blue);
+}
+.link-card__title {
+	font-weight: 700;
+	line-height: 1.3;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+.link-card__description {
+	font-size: 0.85rem;
+	opacity: 0.8;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+@media (max-width: 30rem) {
+	.link-card {
+		flex-direction: column;
+		align-items: stretch;
+	}
+	.link-card > picture,
+	.link-card > .link-card__image {
+		flex-basis: auto;
+	}
+	.link-card__image {
+		aspect-ratio: 1.91;
+	}
+}

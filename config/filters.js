@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { embedMedia } from "./embeds/index.js";
 
 export const filters = {
 	dateForPath: (date) => {
@@ -80,4 +81,5 @@ export const filters = {
 		);
 		return `https://v1.screenshot.11ty.dev/${encodedUrl}/opengraph/`;
 	},
+	embedMedia,
 };
