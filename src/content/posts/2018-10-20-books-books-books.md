@@ -4,7 +4,6 @@ title: Books Books Books
 date: "2018-10-20T16:22:20Z"
 timestamp: "1540052540"
 description: GoodReads API, Google Sheets API, Node, and me.
-excerpt:
 featuredImage:
   src: https://images.unsplash.com/photo-1524995997946-a1c2e315a42f
   credit: Susan Q Yin

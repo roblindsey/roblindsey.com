@@ -4,7 +4,6 @@ title: "Book Review: Akata Witch"
 date: 2025-04-25T20:50:44.729Z
 permalink: /posts/book-review-akata-witch/index.html
 description: "Akata Witch transports the reader to a magical place where nothing is quite as it seems."
-excerpt: ""
 timestamp: 1745614244
 bookMeta:
   title: "Akata Witch"

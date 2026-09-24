@@ -4,7 +4,6 @@ title: Rethinking Everything
 date: "2018-09-27T21:44:46Z"
 timestamp: "1538084686"
 description: 2018 has been the year of rethinking all the things!
-excerpt:
 featuredImage:
   src: https://images.unsplash.com/photo-1526666923127-b2970f64b422
   credit: Donald Giannatti

@@ -4,7 +4,6 @@ title: "Book Review: The Reformatory"
 date: 2025-05-12T15:29:05.272Z
 permalink: /posts/book-review-the-reformatory/index.html
 description: "A heartbreaking tale with a supernatural twist"
-excerpt: ""
 timestamp: 1747063745
 bookMeta:
   title: "The Reformatory"

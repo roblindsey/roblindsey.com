@@ -4,7 +4,6 @@ title: Springtime in a Plague Year
 date: "2020-03-25T18:22:02Z"
 timestamp: "1585160522"
 description: Reflections on life in the time of COVID-19.
-excerpt:
 featuredImage:
   src: https://images.unsplash.com/photo-1433888376991-1297486ba3f5
   credit: Tyler Quiring

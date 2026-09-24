@@ -4,7 +4,6 @@ title: My Favorite Music of 2020
 date: "2020-12-09T15:43:33Z"
 timestamp: "1607528613"
 description: An awesome year for music.
-excerpt:
 featuredImage:
   src:
   credit:

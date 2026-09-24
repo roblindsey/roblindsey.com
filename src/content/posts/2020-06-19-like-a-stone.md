@@ -4,7 +4,6 @@ title: Like a Stone
 date: "2020-06-19T18:20:35Z"
 timestamp: "1592590835"
 description: Unresolved grief and the lives of Black Americans.
-excerpt:
 featuredImage:
   src: https://images.unsplash.com/photo-1465838665945-0f80041cc258
   credit: Sudarshan Bhat

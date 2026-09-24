@@ -4,7 +4,6 @@ title: "Book Review: Blood Over Bright Haven"
 date: 2025-05-15T21:02:40.519Z
 permalink: /posts/book-review-blood-over-bright-haven/index.html
 description: "Magic is the almighty currency to be accrued and wielded by the elites of society. But at what cost?"
-excerpt: ""
 timestamp: 1747342960
 bookMeta:
   title: "Blood Over Bright Haven"

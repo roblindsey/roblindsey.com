@@ -4,7 +4,7 @@
 <meta name="fediverse:creator" content="@robble@social.lol" />
 <meta
 	name="Description"
-	content="{% if excerpt %}{{ excerpt }}{% else %}{{ site.description }}{% endif %}"
+	content="{% if description %}{{ description | escape }}{% else %}{{ site.description }}{% endif %}"
 />
 <meta
 	property="og:title"
@@ -12,7 +12,7 @@
 />
 <meta
 	property="og:description"
-	content="{% if excerpt %}{{ excerpt}}{% else %}{{ site.description }}{% endif %}"
+	content="{% if description %}{{ description | escape }}{% else %}{{ site.description }}{% endif %}"
 />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://roblindsey.com{{ page.url }}" />

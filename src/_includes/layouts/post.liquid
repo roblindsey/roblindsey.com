@@ -29,36 +29,38 @@ layout: layouts/base
         <span>My Stars:</span> {{bookMeta.rating | ratingToStars}} out of 5
       </li>
     </ul>
+    {% assign links = bookMeta | bookLinks %}
+    {% if links.bookshop or links.bn or links.kobo or links.amazon %}
     <hr>
     <p>
       <span>Buy:</span>
-      <a href="https://bookshop.org/a/113197/{{ bookMeta.isbn13 }}"
+      {% if links.bookshop %}<a href="{{ links.bookshop }}"
         ><img
           eleventy:ignore
           src="/assets/images/icons/bookshop-icon.svg"
           alt="Bookshop.org icon"
-      /></a>
-      <a href="https://www.barnesandnoble.com/s/{{ bookMeta.isbn13 }}"
+      /></a>{% endif %}
+      {% if links.bn %}<a href="{{ links.bn }}"
         ><img
           eleventy:ignore
           src="/assets/images/icons/bn-icon.svg"
           alt="Barnes & Noble icon"
-      /></a>
-      <a
-        href="https://www.kobo.com/us/en/search?query={{ bookMeta.title | slugifyBookTitle }}&fclanguages=en"
+      /></a>{% endif %}
+      {% if links.kobo %}<a href="{{ links.kobo }}"
         ><img
           eleventy:ignore
           src="/assets/images/icons/kobo-icon.svg"
           alt="Rakuten Kobo icon"
-      /></a>
-      <a href="https://www.amazon.com/dp/{{ bookMeta.isbn13 | isbn13to10 }}?tag=onethingnew-20"
+      /></a>{% endif %}
+      {% if links.amazon %}<a href="{{ links.amazon }}"
         ><img
           eleventy:ignore
           src="/assets/images/icons/amazon-icon.svg"
           alt="Amazon icon"
-      /></a>
+      /></a>{% endif %}
     </p>
     <p class="affiliate-disclosure">Disclosure: I earn a percentage of sales made through my links to Amazon and Bookshop.</p>
+    {% endif %}
   </aside>
   {% endif %} {% endif %} {{ content }}
 </div>

@@ -1,6 +1,23 @@
 import dayjs from "dayjs";
 import { embedMedia } from "./embeds/index.js";
 
+/**
+ * Converts a 978 ISBN-13 to ISBN-10. Returns null for 979 ISBNs,
+ * which have no ISBN-10.
+ */
+function isbn13to10(isbn13) {
+	if (!isbn13.startsWith("978")) return null;
+
+	const digits = isbn13.substring(3, 12);
+	let sum = 0;
+	for (let i = 0; i < 9; i++) {
+		sum += (10 - i) * parseInt(digits.charAt(i));
+	}
+	const checkDigit = (11 - (sum % 11)) % 11;
+
+	return digits + (checkDigit === 10 ? "X" : checkDigit.toString());
+}
+
 export const filters = {
 	dateForPath: (date) => {
 		const postDate = new Date(date);
@@ -29,35 +46,31 @@ export const filters = {
 		}
 		return bodyClasses;
 	},
-	isbn13to10: (isbn13) => {
-		const normalized = isbn13.toString().replace(/[-\s]/g, "");
+	/**
+	 * Builds retailer links for a book review. Any URL in bookMeta.links
+	 * (bookshop, bn, kobo, amazon) overrides the generated one.
+	 */
+	bookLinks: (bookMeta = {}) => {
+		const isbn13 = String(bookMeta.isbn13 ?? "").replace(/[-\s]/g, "");
+		const overrides = bookMeta.links ?? {};
+		const generated = {};
 
-		if (normalized.startsWith("978")) {
-			// Remove '978' prefix and the existing check digit
-			const digits = normalized.substring(3, 12);
+		if (/^97[89]\d{10}$/.test(isbn13)) {
+			const isbn10 = isbn13to10(isbn13);
+			const search = encodeURIComponent(
+				[bookMeta.title, bookMeta.author].filter(Boolean).join(" "),
+			);
 
-			// Calculate the check digit for ISBN-10
-			let sum = 0;
-			for (let i = 0; i < 9; i++) {
-				sum += (10 - i) * parseInt(digits.charAt(i));
-			}
-
-			// Determine the check digit (X is used if the result is 10)
-			let checkDigit = (11 - (sum % 11)) % 11;
-			checkDigit = checkDigit === 10 ? "X" : checkDigit.toString();
-
-			return digits + checkDigit;
+			generated.bookshop = `https://bookshop.org/a/113197/${isbn13}`;
+			generated.bn = `https://www.barnesandnoble.com/s/${isbn13}`;
+			generated.kobo = `https://www.kobo.com/us/en/search?query=${search}&fclanguages=en`;
+			// 979 ISBNs have no ISBN-10, so Amazon gets a search link instead.
+			generated.amazon = isbn10
+				? `https://www.amazon.com/dp/${isbn10}?tag=onethingnew-20`
+				: `https://www.amazon.com/s?k=${isbn13}&i=stripbooks&tag=onethingnew-20`;
 		}
-		return isbn13;
-	},
-	slugifyBookTitle: (title) => {
-		return title
-			.toLowerCase() // Convert to lowercase
-			.replace(/[^\w\s-]/g, "") // Remove special characters except spaces and hyphens
-			.replace(/\s+/g, "-") // Replace spaces with hyphens
-			.replace(/-+/g, "-") // Replace multiple hyphens with a single hyphen
-			.trim() // Remove whitespace from both ends
-			.replace(/^-+|-+$/g, ""); // Remove leading and trailing hyphens
+
+		return { ...generated, ...overrides };
 	},
 	jamsByTag: (jams, tag) => {
 		if (!tag) return jams;
