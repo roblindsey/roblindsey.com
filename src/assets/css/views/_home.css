@@ -1,62 +1,28 @@
-.home--grid {
-	margin-top: 3rem;
-	ul {
-		list-style-type: none;
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
-		gap: 1rem;
-		max-width: 600px;
+.home--feed {
+	list-style-type: none;
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 0;
+	> li {
+		margin-bottom: 3rem;
+	}
+	.meta-box {
+		position: relative;
+		margin-bottom: 0;
+		padding-top: 2rem;
+	}
+	a {
+		color: var(--lindsey-blue);
+	}
+	.feed-type-tag {
+		margin: 0;
+		top: 0.75rem;
+		right: 0.75rem;
+		a {
+			color: currentColor;
+		}
+	}
+	.posts-list__text-wrap:only-child {
 		width: 100%;
-		margin: 0 auto;
-		padding: 0;
-		li {
-			display: block;
-			border-radius: 1rem;
-			box-shadow: 1px 3px 3px lch(from var(--raisin-black) calc(l - 10) c h);
-			&:active {
-				box-shadow: unset;
-			}
-			a {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				aspect-ratio: 1;
-				font-size: clamp(1.75rem, 5vw, 2.5rem);
-				font-family: var(--font-family-heading);
-				text-transform: uppercase;
-				font-weight: 700;
-				letter-spacing: 0.05em;
-				text-decoration: none;
-				text-box-trim: trim-both;
-			}
-		}
-		.home--grid-posts {
-			background-color: var(--red-accent);
-			transition: all 200ms;
-			&:hover {
-				background-color: lch(from var(--red-accent) calc(l - 5) c h);
-			}
-		}
-		.home--grid-notes {
-			background-color: var(--brown-accent);
-			transition: all 200ms;
-			&:hover {
-				background-color: lch(from var(--brown-accent) calc(l - 5) c h);
-			}
-		}
-		.home--grid-now {
-			background-color: var(--green-accent);
-			transition: all 200ms;
-			&:hover {
-				background-color: lch(from var(--green-accent) calc(l - 5) c h);
-			}
-		}
-		.home--grid-about {
-			background-color: var(--blue-accent);
-			transition: all 200ms;
-			&:hover {
-				background-color: lch(from var(--blue-accent) calc(l - 5) c h);
-			}
-		}
 	}
 }

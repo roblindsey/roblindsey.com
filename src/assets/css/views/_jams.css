@@ -63,7 +63,8 @@
 	}
 }
 .single-crucial-jam,
-.crucial-jam {
+.crucial-jam,
+.feed-type-tag {
 	font-family: var(--font-family-heading);
 	font-weight: 200;
 	font-size: 0.65rem;
@@ -76,7 +77,8 @@
 	}
 	margin-bottom: 1rem;
 }
-.crucial-jam {
+.crucial-jam,
+.feed-type-tag {
 	position: absolute;
 	right: 1rem;
 	top: 0.5rem;

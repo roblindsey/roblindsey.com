@@ -1,25 +1,81 @@
 ---
 title: Home
-permalink: "/"
+pagination:
+  data: collections.feed
+  size: 20
+  alias: feed
+permalink: "/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber | plus: 1 }}/{% endif %}"
 ---
 
 <article class="home">
-	<header>
-		<img
-			src="/assets/images/global/banners/blue-ridge-mountains-1900.jpg"
-			alt="Blue Ridge Mountains"
-		/>
-		<p>
-			I'm a reader, music lover, technologist, and bona fide sad dad living in
-			the western North Carolina mountains.
-		</p>
-	</header>
-	<div class="home--grid">
-		<ul>
-			<li class="home--grid-posts"><a href="/posts">Posts</a></li>
-			<li class="home--grid-notes"><a href="/notes">Notes</a></li>
-			<li class="home--grid-now"><a href="/jams">Jams</a></li>
-			<li class="home--grid-about"><a href="/about">About</a></li>
-		</ul>
-	</div>
+	<ul class="home--feed">
+		{% for item in feed %}
+		<li class="home--feed-{{ item.data.contentType }}">
+			{% if item.data.contentType == "note" %}
+			<div class="meta-box notes_list_meta">
+				<p class="feed-type-tag"><a href="/notes">note</a></p>
+				<article class="note_list__post">
+					<div class="note_list__post__text flow">{{ item.content }}</div>
+					<p class="note_list__post__date">
+						<a href="{{ item.url }}">{{ item.data.title }}</a>
+					</p>
+				</article>
+			</div>
+			{% elsif item.data.contentType == "post" %}
+			<div class="meta-box posts-list-wrap">
+				<p class="feed-type-tag"><a href="/posts">post</a></p>
+				<article class="posts-list__post">
+					<div class="posts-list__inner">
+						{% if item.data.featuredImage.src %}
+						<a href="{{ item.url }}"
+							><picture
+								><img
+									src="{{ item.data.featuredImage.src }}"
+									alt="{{ item.data.title }}" /></picture
+						></a>
+						{% endif %}
+						<div class="posts-list__text-wrap">
+							<h3 class="posts-list__post__heading">
+								<a href="{{ item.url }}">{{ item.data.title }}</a>
+							</h3>
+							<p class="page-subtitle">{{ item.data.date | postDate }}</p>
+							<p class="posts-list__post__text">{{ item.data.description }}</p>
+						</div>
+					</div>
+				</article>
+			</div>
+			{% elsif item.data.contentType == "jam" %}
+			<div class="meta-box jam-list">
+				<p class="feed-type-tag"><a href="/jams">jam</a></p>
+				<div class="single-jam flow">
+					<p class="timestamp">{{ item.data.date | postDate }}</p>
+					<a href="{{ item.url }}">
+						<h2>{{ item.data.songTitle }} by {{ item.data.artist }}</h2>
+					</a>
+					<a href="{{ item.url }}">
+						<picture>
+							<img
+								src="{{ item.data.imageUrl }}"
+								alt="Cover for {{ item.data.songTitle }} - {{ item.data.artist }}"
+							/>
+						</picture>
+					</a>
+				</div>
+			</div>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	<nav class="notes_pagination">
+		<div>
+			{% if pagination.href.next %}
+			<a href="{{ pagination.href.next }}">Older</a>
+			{% endif %}
+		</div>
+		<div>
+			{% if pagination.href.previous %}
+			<a href="{{ pagination.href.previous }}">Newer</a>
+			{% endif %}
+		</div>
+	</nav>
 </article>

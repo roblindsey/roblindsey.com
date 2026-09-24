@@ -28,6 +28,17 @@ export const collections = {
 
 		return jams;
 	},
+	feed: (collectionApi) => {
+		let feed = collectionApi
+			.getFilteredByGlob([
+				"src/content/posts/**/*.md",
+				"src/content/notes/**/*.md",
+				"src/content/jams/**/*.md",
+			])
+			.sort((a, b) => b.date - a.date);
+
+		return feed;
+	},
 	crucialJams: (collectionApi) => {
 		let crucialJams = collectionApi
 			.getFilteredByGlob("src/content/jams/**/*.md")
