@@ -21,7 +21,7 @@ layout: layouts/base
     <ul>
       <li>
         <span>Title:</span>
-        <a href="{{bookMeta.hardcoverUrl}}">{{bookMeta.title}}</a>
+        {% if bookMeta.hardcoverUrl != blank %}<a href="{{bookMeta.hardcoverUrl}}">{{bookMeta.title}}</a>{% else %}{{bookMeta.title}}{% endif %}
       </li>
       <li><span>Author:</span> {{bookMeta.author}}</li>
       <li><span>Pub. Year:</span> {{bookMeta.pubYear}}</li>

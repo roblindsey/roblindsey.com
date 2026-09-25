@@ -12,9 +12,9 @@ bookMeta:
   hardcoverUrl: "https://hardcover.app/books/blood-over-bright-haven"
   isbn13: 9780593873359
 featuredImage:
-  src: /assets/images/posts/2025/blood-over-bright-haven-featured.jpeg
+  src: /assets/images/posts/2025/blood-over-bright-haven-featured.jpg
   credit: Blood Over Bright Haven
-  url: /assets/images/posts/2025/blood-over-bright-haven-featured.jpeg
+  url: /assets/images/posts/2025/blood-over-bright-haven-featured.jpg
   alt: Blood Over Bright Haven
 ---
 

@@ -12,9 +12,9 @@ bookMeta:
   hardcoverUrl: "https://hardcover.app/books/martyr-a-novel"
   isbn13: 9780593685778
 featuredImage:
-  src: /assets/images/posts/2025/martyr-featured.jpeg
+  src: /assets/images/posts/2025/martyr-featured.jpg
   credit: Martyr
-  url: /assets/images/posts/2025/martyr-featured.jpeg
+  url: /assets/images/posts/2025/martyr-featured.jpg
   alt: Martyr
 ---
 

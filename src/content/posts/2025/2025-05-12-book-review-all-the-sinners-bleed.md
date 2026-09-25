@@ -12,9 +12,9 @@ bookMeta:
   hardcoverUrl: "https://hardcover.app/books/all-the-sinners-bleed"
   isbn13: 9781250831927
 featuredImage:
-  src: /assets/images/posts/2025/all-the-sinners-bleed-featured.jpeg
+  src: /assets/images/posts/2025/all-the-sinners-bleed-featured.jpg
   credit: All the Sinners Bleed
-  url: /assets/images/posts/2025/all-the-sinners-bleed-featured.jpeg
+  url: /assets/images/posts/2025/all-the-sinners-bleed-featured.jpg
   alt: All the Sinners Bleed
 ---
 
