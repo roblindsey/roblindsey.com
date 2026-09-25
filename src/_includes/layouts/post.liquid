@@ -7,10 +7,15 @@ layout: layouts/base
     {%- if featuredImage.alt.length %}
     <figure class="post__featured-image{% if tags contains "book-review" %} post__featured-image--book{% endif %}">
       <img src="{{ featuredImage.src }}" alt="{{ featuredImage.alt }}" />
+      {%- if featuredImage.credit != blank %}
       <figcaption>
         <span>Photo by</span>
-        <a href="{{ featuredImage.url }}">{{ featuredImage.credit }}</a>
+        {% if featuredImage.url != blank %}<a href="{{ featuredImage.url }}">{{ featuredImage.credit }}</a>{% else %}{{ featuredImage.credit }}{% endif %}
+        {%- if featuredImage.source != blank %} on
+        <a href="{{ featuredImage.sourceUrl }}">{{ featuredImage.source }}</a>
+        {%- endif %}
       </figcaption>
+      {%- endif %}
     </figure>
     {% endif -%}
     <h2 class="page-title">{{title}}</h2>
