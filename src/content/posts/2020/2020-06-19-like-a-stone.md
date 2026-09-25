@@ -5,10 +5,12 @@ date: "2020-06-19T18:20:35Z"
 timestamp: "1592590835"
 description: Unresolved grief and the lives of Black Americans.
 featuredImage:
-  src: https://images.unsplash.com/photo-1465838665945-0f80041cc258
-  credit: Sudarshan Bhat
-  url: https://unsplash.com/@zudarzan
-  alt: Stack of stones
+  src: /assets/images/posts/2020/like-a-stone-featured.jpg
+  credit: "Mirko Bellmann"
+  url: "https://www.pexels.com/photo/pile-of-stones-on-ground-12924098/"
+  alt: "A stack of balanced rocks against a backdrop of mountain ranges and a clear blue sky."
+  source: "Pexels"
+  sourceUrl: "https://www.pexels.com"
 ---
 
 Sometimes grief is like a stone in your guts. A knot that you can't unwind no matter what you do. Sitting there, unmoving, uncomfortable, unresolved. Some things that hurt us are out of our control, and then you swallow another stone.

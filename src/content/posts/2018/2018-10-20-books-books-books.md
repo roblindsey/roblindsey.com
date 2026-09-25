@@ -5,10 +5,12 @@ date: "2018-10-20T16:22:20Z"
 timestamp: "1540052540"
 description: GoodReads API, Google Sheets API, Node, and me.
 featuredImage:
-  src: https://images.unsplash.com/photo-1524995997946-a1c2e315a42f
-  credit: Susan Q Yin
-  url: https://unsplash.com/@syinq
-  alt: Books in a library
+  src: /assets/images/posts/2018/books-books-books-featured.jpg
+  credit: "Erik Mclean"
+  url: "https://www.pexels.com/photo/books-on-brown-wooden-shelves-8045884/"
+  alt: "Colorful books neatly arranged on modern shelves in a bright library."
+  source: "Pexels"
+  sourceUrl: "https://www.pexels.com"
 ---
 
 I read a lot. I've been trying to read some spooky books this Halloween season. You can check out the books I'm reading on my [GoodReads profile](https://www.goodreads.com/user/show/1665822-rob-lindsey). And when I launched this new site, I knew I wanted to include a simple page of recent [books I've been reading](/books) (inspired once more by the good [Mr. Rupert](https://daverupert.com/bookshelf)).

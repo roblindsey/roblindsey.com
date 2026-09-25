@@ -5,10 +5,12 @@ date: "2020-03-25T18:22:02Z"
 timestamp: "1585160522"
 description: Reflections on life in the time of COVID-19.
 featuredImage:
-  src: https://images.unsplash.com/photo-1433888376991-1297486ba3f5
-  credit: Tyler Quiring
-  url: https://unsplash.com/@tylerdq
-  alt: Black crow in a desert
+  src: /assets/images/posts/2020/springtime-in-a-plague-year-featured.jpg
+  credit: "Paulino Acosta Santana"
+  url: "https://www.pexels.com/photo/majestic-raven-perched-in-jasper-national-park-34981872/"
+  alt: "Close-up of a raven perched on branches in Jasper National Park, Alberta."
+  source: "Pexels"
+  sourceUrl: "https://www.pexels.com"
 ---
 
 I turned 43 a week ago, right about the time I stopped leaving the apartment. Since then I’ve managed to get this website redesigned. I’ve finished my last two outstanding freelance projects. I have done some cooking. I’m still reading books, though slower than usual. I’ve watched too much Twitch. Played some computer games myself. Spent too much time refreshing Twitter. Only venturing out of the apartment for food and to take out the trash. The low-level, background hum of anxiety about the state of the world during the COVID-19 pandemic keeps me mostly distracted, but I’m still taking care of basic life.

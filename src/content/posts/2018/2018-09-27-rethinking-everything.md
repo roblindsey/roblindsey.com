@@ -5,10 +5,12 @@ date: "2018-09-27T21:44:46Z"
 timestamp: "1538084686"
 description: 2018 has been the year of rethinking all the things!
 featuredImage:
-  src: https://images.unsplash.com/photo-1526666923127-b2970f64b422
-  credit: Donald Giannatti
-  url: https://unsplash.com/photos/Wj1D-qiOseE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText
-  alt: Is anybody out there?
+  src: /assets/images/posts/2018/rethinking-everything-featured.jpg
+  credit: "Igor Mashkov"
+  url: "https://www.pexels.com/photo/radio-telescope-against-sky-with-stars-6325001/"
+  alt: "From below of blue starry sky over radio telescope and trees with leaves"
+  source: "Pexels"
+  sourceUrl: "https://www.pexels.com"
 ---
 
 As I sit here listening to the somewhat repetitive jazz station on Spotify, drinking coffee, procrastinating work, it occurs to me this is the fourth time I've redesigned and rebuilt this website in the last year. That's crazy.
