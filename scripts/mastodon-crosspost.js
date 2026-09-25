@@ -2,7 +2,7 @@
 // deploy and hourly rebuild. Notes already in the state file are skipped, so
 // running it often never posts twice.
 //
-// Environment:
+// Environment (read from the checkout's .env when it exists):
 //   MASTODON_TOKEN     Access token with write:statuses and write:media
 //   MASTODON_STATE     JSON file of posted notes; keep it outside the checkout
 //                      so the hourly auto-commit does not commit it
@@ -21,6 +21,10 @@ const SITE_ROOT = path.resolve(
 	"..",
 );
 const NOTES_DIR = path.join(SITE_ROOT, "src/content/notes");
+
+// The same .env the build reads for the Hardcover and Last.fm keys.
+const ENV_FILE = path.join(SITE_ROOT, ".env");
+if (fs.existsSync(ENV_FILE)) process.loadEnvFile(ENV_FILE);
 
 const INSTANCE = (
 	process.env.MASTODON_INSTANCE || "https://social.lol"
