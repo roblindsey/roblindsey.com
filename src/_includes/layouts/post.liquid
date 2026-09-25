@@ -5,7 +5,7 @@ layout: layouts/base
 <div class="base--main__post flow" style="--flow-space: 1.3em">
   <header class="page-intro">
     {%- if featuredImage.alt.length %}
-    <figure class="post__featured-image{% if "book-review" in tags %} post__featured-image--book{% endif %}">
+    <figure class="post__featured-image{% if tags contains "book-review" %} post__featured-image--book{% endif %}">
       <img src="{{ featuredImage.src }}" alt="{{ featuredImage.alt }}" />
       <figcaption>
         <span>Photo by</span>
@@ -16,7 +16,7 @@ layout: layouts/base
     <h2 class="page-title">{{title}}</h2>
     <p class="post__subtitle">{{date | postDate}}</p>
   </header>
-  {% if "book-review" in tags %} {% if bookMeta.title and bookMeta.author %}
+  {% if tags contains "book-review" %} {% if bookMeta.title and bookMeta.author %}
   <aside class="meta-box book-review">
     <ul>
       <li>
