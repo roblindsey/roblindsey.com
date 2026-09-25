@@ -19,10 +19,6 @@ function isbn13to10(isbn13) {
 }
 
 export const filters = {
-	dateForPath: (date) => {
-		const postDate = new Date(date);
-		return dayjs(postDate).format("YYYY-MM-DD").toString();
-	},
 	dateForBookshelf: (date) => {
 		const bookDate = new Date(date);
 		return dayjs(bookDate).format("M.D.YYYY").toString();

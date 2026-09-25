@@ -2,7 +2,6 @@
 tags: "book-review"
 title: "Book Review: All the Sinners Bleed"
 date: 2025-05-12T14:46:41.032Z
-permalink: /posts/book-review-all-the-sinners-bleed/index.html
 description: "S.A. Cosby's All the Sinners Bleed is one of my favorite crime novels in years"
 timestamp: 1747061201
 bookMeta:

@@ -2,7 +2,6 @@
 tags: "book-review"
 title: "Book Review: The Wonder Engine"
 date: 2025-04-25T20:36:37.284Z
-permalink: /posts/book-review-the-wonder-engine/index.html
 description: "In the sequel to CLOCKWORK BOYS, our heroes have arrived in Anuket City, the source of the mysterious Clockwork Boys. But the secrets they're keeping could well destroy them, before the city even gets the chance."
 timestamp: 1745613397
 bookMeta:

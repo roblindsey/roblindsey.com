@@ -2,7 +2,6 @@
 tags: "book-review"
 title: "Book Review: Martyr"
 date: 2025-05-15T20:53:47.716Z
-permalink: /posts/book-review-martyr/index.html
 description: "Poetic novel of depression, addiction, and grief"
 timestamp: 1747342427
 bookMeta:

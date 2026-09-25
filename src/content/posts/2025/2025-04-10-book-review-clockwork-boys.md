@@ -2,7 +2,6 @@
 tags: "book-review"
 title: "Book Review: Clockwork Boys"
 date: 2025-04-10T20:24:29.654Z
-permalink: /posts/book-review-clockwork-boys/index.html
 description: "A paladin, an assassin, a forger, and a scholar ride out of town. It’s not the start of a joke, but rather an espionage mission with deadly serious stakes."
 timestamp: 1744316669
 bookMeta:
