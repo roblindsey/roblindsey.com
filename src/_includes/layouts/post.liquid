@@ -6,7 +6,12 @@ layout: layouts/base
   <header class="page-intro">
     {%- if featuredImage.alt.length %}
     <figure class="post__featured-image{% if tags contains "book-review" %} post__featured-image--book{% endif %}">
+      {%- if tags contains "book-review" %}
       <img src="{{ featuredImage.src }}" alt="{{ featuredImage.alt }}" />
+      {%- else %}
+      {%- comment -%} The column is at most about 664px wide (65ch less padding); 1400px covers it on 2x screens. {%- endcomment -%}
+      <img src="{{ featuredImage.src }}" alt="{{ featuredImage.alt }}" eleventy:widths="800,1400,auto" sizes="(min-width: 700px) 664px, 100vw" />
+      {%- endif %}
       {%- if featuredImage.credit != blank %}
       <figcaption>
         <span>Photo by</span>
