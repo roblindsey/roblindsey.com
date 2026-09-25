@@ -5,6 +5,11 @@
 	padding: 0;
 	margin-bottom: 1.5rem;
 }
+/* Book covers are saved at 900px tall for high-density screens. */
+.post__featured-image--book img {
+	width: auto;
+	max-height: 450px;
+}
 .post__subtitle {
 	margin: 0;
 	font-size: 0.75em;

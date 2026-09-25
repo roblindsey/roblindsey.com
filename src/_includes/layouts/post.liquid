@@ -5,7 +5,7 @@ layout: layouts/base
 <div class="base--main__post flow" style="--flow-space: 1.3em">
   <header class="page-intro">
     {%- if featuredImage.alt.length %}
-    <figure class="post__featured-image">
+    <figure class="post__featured-image{% if "book-review" in tags %} post__featured-image--book{% endif %}">
       <img src="{{ featuredImage.src }}" alt="{{ featuredImage.alt }}" />
       <figcaption>
         <span>Photo by</span>
