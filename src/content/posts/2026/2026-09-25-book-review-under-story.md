@@ -2,7 +2,7 @@
 tags: "book-review"
 title: "Book Review: Under Story"
 date: 2026-09-25T14:49:35.175Z
-description: ""
+description: "Fungus among us. We're all just fungus waiting to be born."
 timestamp: 1790347775
 bookMeta:
   title: "Under Story"
